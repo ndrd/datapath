@@ -7,3 +7,4 @@ Code Guidelines
 - functionality before anything!
 
 Tlaca, you can make it happen! 
+I do, I will , I done.
