@@ -20,7 +20,7 @@ INCLUDE=src/vm/archivos/archivos.h
 
 # test: compile
 # 	${foreach dir,${TESTS}, ./${BIN} < ${TESTDIR}/${dir} ;}
-SRC=src/main.c
+SRC=src/main.c src/memoria/memoria.c
 MAIN=main.c
 BIN=myvm
 CFLAGS=-g

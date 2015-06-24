@@ -1,25 +1,23 @@
-#ifndef DATA_MEMORY_H_INCLUDED
-#define DATA_MEMORY_H_INCLUDED
+#ifndef MEMORIA_REGISTROS
+#define MEMORIA_REGISTROS
 
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-int LIMITE_MEMORIA = 50
+extern int LIMITE_MEMORIA_REGISTROS;
 
 struct registros
 {
 	struct registros_elemento
 	{
-		char var_elemento[20];
-		int val;
-	
+		char nombre[20];
+		int valor;
 	}                                                                                                                                                                                                                                                                                                                                          mem[1024]; 
 };
 
-
-void guardar(int pos,struct registros *dm,char*var_elemento,int val);
-int get_lugar(char*var_elemento,struct registros *dm);			// Regresa el lugar donde se guarda
-		
+void guardar(int i ,struct registros *registros ,char *nmbr_var,int valor);
+int get_lugar(char *nmbr_var,struct registros *registros);
+void set_lim_mem(int lim);
 
 #endif	

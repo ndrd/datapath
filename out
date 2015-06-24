@@ -1,0 +1,1 @@
+gcc  -o myvm src/main.c src/memoria/memoria.c 
