@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int limite_memoria = 50
+
 struct registros
 {
 	struct registros_element
@@ -16,7 +18,7 @@ struct registros
 };
 
 
-void store(int pos,struct registros *dm,char*var_name,int val);
+void guardar(int pos,struct registros *dm,char*var_name,int val);
 int get_mem_location(char*var_name,struct registros *dm);			// Returns the index where var_name is stored
 		
 
