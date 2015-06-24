@@ -1,7 +1,7 @@
 # SRC=codegen.cpp instr.cpp parser.cpp procentry.cpp strentry.cpp token.cpp
 # MAIN=main.cpp
 # LEXER=lexer.cpp
-# INCLUDE=codegen.h instr.h parser.h procentry.h strentry.h token.h
+INCLUDE=src/vm/archivos/archivos.h 
 # LEX=scanner.flex
 # LIBS=-ll
 # TESTDIR=../test
@@ -20,9 +20,9 @@
 
 # test: compile
 # 	${foreach dir,${TESTS}, ./${BIN} < ${TESTDIR}/${dir} ;}
-SRC=src/hello.c
-MAIN=hello.c
-BIN=hello
+SRC=src/main.c
+MAIN=main.c
+BIN=myvm
 CFLAGS=-g
 SUBDIRECTORIES= src/compiler src/vm
 
