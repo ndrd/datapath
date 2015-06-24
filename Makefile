@@ -33,11 +33,3 @@ compile:
 clean:
 	rm -rf *~ *.o ${BIN}
 
-subsystem:
-	cd src/compiler && $(MAKE) 
-
-
-all:
-	for subdir in $(SUBDIRECTORIES); do   \
-	(cd $$subdir; $(MAKE) all); \
-	done;
