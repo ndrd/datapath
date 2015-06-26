@@ -1,6 +1,7 @@
 #include "operaciones.h"
 #include "../vm/errores.c"
-
+#include "../memoria/memoria.h"
+#include "../memoria/memoria.c"
 
 void add(int dest,int reg1,int reg2)
 {	
@@ -164,8 +165,7 @@ void li(int dest,int val)
 void lw(int dest,int addr,struct data_mem*dm)
 {
 
-	
-	registros[dest].val=(dm->mem[addr].val);
+	registros[dest].val=(dm->celda[addr].val);
 	pc++;
 	return;
 }
@@ -173,10 +173,28 @@ void lw(int dest,int addr,struct data_mem*dm)
 void sw(int dest,int addr,struct data_mem*dm)
 {
 
-	dm->mem[addr].val=registros[dest].val;
+	dm->celda[addr].val=registros[dest].val;
 	pc++;
 	return;	
 }
+
+void lb(int dest,int addr,struct nombre)
+{
+
+	registros[dest].val=(nombre->celda[addr].val);
+	pc++;
+	return;
+}
+
+void sb(int dest,int addr,struct nombre)
+{
+
+	nombre->celda[addr].val=registros[dest].val;
+	pc++;
+	return;	
+}
+
+
 void b(int pc_dest)
 {	
 	pc=labels.label[pc_dest].inst_num;

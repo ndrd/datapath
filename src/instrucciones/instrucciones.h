@@ -48,7 +48,7 @@ struct tabla_label
 {
 	struct elemento_label{
 		char name[20];
-		int inst_num;	
+		int num_inst;	
 	}label[100];
 }labels;
 int num_label;
@@ -58,7 +58,7 @@ int* encode(char*input,int*coded,struct memoria_datos*dm,int num);
 void decode(int*encoded_inst,struct memoria_datos*dm);	
 
 
-void load_instruccion_mem(struct instruccion_mem*im,int mem_pos,int*instruct);  
+void load_instruccion_mem(struct instruccion_mem*im,int posiscion_mem,int*instruccion);  
 void execute(struct instruccion_mem*im,int fin,struct memoria_datos*dm);
 
 
