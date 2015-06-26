@@ -17,6 +17,7 @@ typedef enum {
 /* representa la memoria de datos puede almacenar */
 struct memoria_datos
 {
+
 	struct celda
 	{	
 		type tipo_dato;

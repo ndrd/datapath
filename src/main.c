@@ -5,7 +5,7 @@
 
 #include "memoria/memoria.h"
 
-long memoria_usuario_bytes(int argc, char** argv);
+long memoria_usuario(int argc, char** argv);
 void print_help();
 
 int
