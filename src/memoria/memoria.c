@@ -1,5 +1,5 @@
 #include "memoria.h"
-#include "errores.h"
+#include "../errores/errores.h"
 
 /* limite en bytes */
 int LIMITE_MEMORIA = 4096;

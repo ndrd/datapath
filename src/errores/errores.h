@@ -1,5 +1,5 @@
-#ifndef CONTROL_ERRORES
-#define CONTROL_ERRORES
+#ifndef ERRORES_H
+#define ERRORES_H
 
 /*
 1 División entre cero
@@ -19,6 +19,6 @@
 #define OPERACION_INVALIDA		5
 #define LLAMDA_SYS_INVALIDA		6	
 
-void tirar_error(int clave_error);
+void tirar_error (int clave_error);
 
-void volcar_memoria(struct memoria_datos *memoria, struct registros *registros)
+#endif
