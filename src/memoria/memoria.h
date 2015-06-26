@@ -28,10 +28,10 @@ struct memoria_datos
 };
 
 /* almacena el dato dentro de la memoria, de la mano del nombre de la variable que se le asigno */
-void guardar(int index, struct memoria_datos *memoria, char *nombre, int data);
+void guardar_ram(int index, struct memoria_datos *memoria, char *nombre, int data);
 /* nos da su posicion dentor del arreglo de la memoria */
-int get_index(char *nombre, struct memoria_datos *memoria);
+int get_index_ram(char *nombre, struct memoria_datos *memoria);
 /* establece el limite de la memoria */
-void set_lim_mem(int lim);
+void set_lim_mem_ram(int lim);
 
 #endif	
