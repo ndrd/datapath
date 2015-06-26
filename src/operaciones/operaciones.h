@@ -30,11 +30,5 @@ void bltz (int num;		//lo mismo
 void syscall();								
 
 
-
-void jump(int num);
-
-
-// Move instruction
-void move(int dest,int src);
  #endif		//End of file
 
