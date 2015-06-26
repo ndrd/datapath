@@ -7,13 +7,13 @@ int primer_char(char*linea)
 	int i;
  	for(i=0;(linea[i] == 32 || linea[i] == 9) && linea[i]!='\x0';i++);	
 	
-	if(linea[i] == 10)
+	if(linea[i] ==  10)
 		return -1;
 	else
 	 	return i;
 }
 
-int read_file(FILE*archivo,struct instruccion_mem*im,struct memoria_ram *ram)
+int read_file(FILE*archivo,struct instruccion_mem*im, memoria_ram *ram)
 {	
 
 	char linea[100],temp[100];
@@ -22,11 +22,11 @@ int read_file(FILE*archivo,struct instruccion_mem*im,struct memoria_ram *ram)
 	
 	int data_text=0;	
 
-	while(!feof(file))
+	while(!feof(archivo))
 	{	
 		linea_num++;
 		
-		fgets(linea,99,file);
+		fgets(linea,99,archivo);
 		i = primer_char(linea);
 		
 		if(i == -1 || linea[i] =='#')
@@ -89,7 +89,7 @@ int read_file(FILE*archivo,struct instruccion_mem*im,struct memoria_ram *ram)
 			if(linea[i] != '\x0')
 			{	
 				for(;linea[i] >= '0' && linea[i] <= '9';i++)
-					valor = valor*10+(line[i]-'0');
+					valor = valor*10+(linea[i]-'0');
 						
 			}
 			
