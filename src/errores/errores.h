@@ -1,4 +1,4 @@
-#ifndef ERRORES_H
+/*#ifndef ERRORES_H
 #define ERRORES_H
 
 /*
@@ -9,9 +9,7 @@
 5 Código de operacion inválido
 6 Código de llamada a sistema inválido
 */
-
-
-
+/*
 #define DIVISION_CERO			1
 #define DIRECCION_INVALIDA		2
 #define MEMORIA_AGOTADA			3
@@ -21,4 +19,4 @@
 
 void tirar_error (int clave_error);
 
-#endif
+#endif*/
