@@ -24,7 +24,7 @@ struct memoria_datos
 		char nombre[16];
 		/* int de 32 bits, justo lo que necesitamos */
 		int data;
-	};
+	} celdas[1024];
 };
 
 /* almacena el dato dentro de la memoria, de la mano del nombre de la variable que se le asigno */

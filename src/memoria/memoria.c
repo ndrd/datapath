@@ -14,15 +14,15 @@ void guardar(int i, struct memoria_datos *memoria, char *nombre, int data)
 		//tirar_error(MEMORIA_AGOTADA);
 	}
 		
-	strcpy(memoria->nombre[i].nombre, nombre);
-	memoria->nombre[i].data = data;
+	strcpy(memoria->celdas[i].nombre, nombre);
+	memoria->celdas[i].data = data;
 	return;
 }
 
 int get_index(char *nombre, struct memoria_datos *memoria)
 {
 	for (int i = 0; i < LIMITE_MEMORIA; i++)
-		if (!strcmp(nombre, memoria->nombre[i].nombre))
+		if (!strcmp(nombre, memoria->celdas[i].nombre))
 			return i;
 	
 	// Si no coincide muestra error
