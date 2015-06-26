@@ -7,6 +7,8 @@
 #include "../registros/registros.h"
 #include "../alu/alu.h"
 
+#define LIMITE_MEMORIA_INSTRUCCIONES 1024
+
 int pc;
 
 #define ADD 		0h0	
@@ -33,26 +35,30 @@ int pc;
 
 
 
-struct instruccion_elemnto
+struct instruccion
 {
 	int cod[4];
 	char*c;
-};
+} ;
 
 
-struct instruccion_mem
+struct 
 {
-	struct instruccion_elemnto mem[1024];
-	
-};
+	struct instruccion rows[LIMITE_MEMORIA_INSTRUCCIONES];
+} memoria_instrucciones;
 
-struct tabla_label
+struct etiqueta {
+	char nombre[20];
+	int n_instruccion;	
+} ;
+
+struct 
 {
-	struct elemento_label{
-		char name[20];
-		int num_inst;	
-	}label[100];
-} labels;
+	int limite;
+	struct etiqueta indice[100];
+
+} tabla_etiquetas;
+
 int num_label;
 
 

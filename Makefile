@@ -1,5 +1,6 @@
 SRC=src/main.c src/memoria/memoria.c  \
-src/errores/errores.c src/registros/registros.c
+src/errores/errores.c src/registros/registros.c \
+src/alu/alu.c
 
 
 MAIN=main.c

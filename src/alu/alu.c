@@ -1,14 +1,12 @@
 #include "alu.h"
-#include "../errores/errores.c"
-#include "../memoria/memoria.h"
-#include "../memoria/memoria.c"
+#include <stdio.h>
 
 void add(int dest, int reg1, int reg2)
 {	
 		
-	int a=(reg1<32)?registros[reg1].val:reg1-32;
-	int b=(reg2<32)?registros[reg2].val:reg2-32;
-	registros[dest].val=a+b;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	registros[dest].data=a+b;
 	pc++;
 
 	return;
@@ -18,10 +16,10 @@ void add(int dest, int reg1, int reg2)
 void sub(int dest,int reg1,int reg2)
 {	
 
-	int a=(reg1<32)?registros[reg1].val:reg1-32;
-	int b=(reg2<32)?registros[reg2].val:reg2-32;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
 	
-	registros[dest].val=a-b;
+	registros[dest].data=a-b;
 	pc++;
 
 	return;
@@ -30,10 +28,10 @@ void sub(int dest,int reg1,int reg2)
 void mul (int dest,int reg1,int reg2)
 {	
 		
-	int a=(reg1<32)?registros[reg1].val:reg1-32;
-	int b=(reg2<32)?registros[reg2].val:reg2-32;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
 	
-	registros[dest].val=a*b;
+	registros[dest].data=a*b;
 	pc++;
 
 	return;
@@ -41,57 +39,61 @@ void mul (int dest,int reg1,int reg2)
 void divi (int dest,int reg1,int reg2)
 {	
 		
-	int a=(reg1<32)?registros[reg1].val:reg1-32;
-	int b=(reg2<32)?registros[reg2].val:reg2-32;
-	if(b <= 0)tirar error(1) ;
-	registros[dest].val=a/b;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
+
+	if(b <= 0)
+		tirar_error(DIVISION_CERO) ;
+
+	registros[dest].data=a/b;
 	pc++;
 
 	return;
 }
 
 
-void fadd(float dest,float reg1,float reg2)
+void fadd(int dest,int reg1,int reg2)
 {	
 		
-	float a=(reg1<32)?registros[reg1].val:reg1-32;
-	float b=(reg2<32)?registros[reg2].val:reg2-32;
-	registros[dest].val=a+b;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	registros[dest].data=a+b;
 	pc++;
 
 	return;
 }
 
  
-void fsub(float dest,float reg1,float reg2)
+void fsub(int dest,int reg1,int reg2)
 {	
 		
-	float a=(reg1<32)?registros[reg1].val:reg1-32;
-	float b=(reg2<32)?registros[reg2].val:reg2-32;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
 	
-	registros[dest].val=a-b;
+	registros[dest].data=a-b;
 	pc++;
 
 	return;
 }
-void fmul (float dest,float reg1,float reg2)
+void fmul (int dest,int reg1,int reg2)
 {	
 		
-	float a=(reg1<32)?registros[reg1].val:reg1-32;
-	float b=(reg2<32)?registros[reg2].val:reg2-32;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
 
-	registros[dest].val=a*b;
+	registros[dest].data=a*b;
 	pc++;
 
 	return;
 }	
-void fdiv (float dest,float reg1,float reg2)
+void fdiv (int dest,int reg1,int reg2)
 {	
 		
-	float a=(reg1<32)?registros[reg1].val:reg1-32;
-	float b=(reg2<32)?registros[reg2].val:reg2-32;
-	if(b <= 0)tirar error(DIVISION_CERO) ;
-	registros[dest].val= a / b;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	if(b <= 0)
+		tirar_error(DIVISION_CERO) ;
+	registros[dest].data= a / b;
 	pc++;
 
 	return;
@@ -101,10 +103,10 @@ void fdiv (float dest,float reg1,float reg2)
 void and(int dest,int reg1,int reg2)
 {	
 
-	int a=(reg1<32)?registros[reg1].val:reg1-32;
-	int b=(reg2<32)?registros[reg2].val:reg2-32;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
 	
-	registros[dest].val = a & b;
+	registros[dest].data = a & b;
 	pc++;
 	return;
 }
@@ -115,10 +117,10 @@ void or(int dest,int reg1,int reg2)
 {
 		
 			
-	int a=(reg1<32)?registros[reg1].val:reg1-32;
-	int b=(reg2<32)?registros[reg2].val:reg2-32;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
 	
-	registros[dest].val = a | b;
+	registros[dest].data = a | b;
 	pc++;
 	
 	
@@ -128,9 +130,9 @@ void or(int dest,int reg1,int reg2)
 void not(int reg1)
 {
 				
-	int a=(reg1<32)?registros[reg1].val:reg1-32;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
 	
-	a = -a
+	a = -a;
 	pc++;
 	
 	return;
@@ -139,10 +141,10 @@ void not(int reg1)
  void xor(int dest,int reg1,int reg2)
 {
 		
-	int a=(reg1<32)?registros[reg1].val:reg1-32;
-	int b=(reg2<32)?registros[reg2].val:reg2-32;
+	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int b=(reg2<32)?registros[reg2].data:reg2-32;
 	
-	registros[dest].val= ((a + b) * ((-a) + (-b))) ;
+	registros[dest].data= ((a + b) * ((-a) + (-b))) ;
 	pc++;
 	
 	
@@ -154,7 +156,7 @@ void not(int reg1)
 void li(int dest, int val)
 {
 	
-	registros[dest].val = val;
+	registros[dest].data = val;
 	pc++;
 	
 		
@@ -164,42 +166,42 @@ void li(int dest, int val)
 
 void lw(int dest,int addr, memoria_ram *ram)
 {
-	registros[dest].val=(ram->rows[addr].data);
+	registros[dest].data=(ram->rows[addr].data);
 	pc++;
 	return;
 }
 
 void sw(int dest, int addr, memoria_ram *ram)
 {
-	ram->rows[addr].data = registros[dest].val;
+	ram->rows[addr].data = registros[dest].data;
 	pc++;
 	return;	
 }
 
-void lb(int dest,int addr,struct nombre)
+void lb(int dest,int addr,memoria_ram *ram)
 {
-	registros[dest].val=(nombre->celda[addr].val);
+	registros[dest].data=(ram->rows[addr].data);
 	pc++;
 	return;
 }
 
-void sb(int dest,int addr,struct nombre)
+void sb(int dest,int addr,memoria_ram *ram)
 {
-	nombre->celda[addr].val=registros[dest].val;
+	ram->rows[addr].data=registros[dest].data;
 	pc++;
 	return;	
 }
 
 void b(int pc_dest)
 {	
-	pc = labels.label[pc_dest].inst_num;
+	pc = tabla_etiquetas.indice[pc_dest].n_instruccion;
 	return;
 }
 
 void beqz(int pc_dest)
 {	
 	if (pc_dest == 0)
-		pc = labels.label[pc_dest].inst_num;
+		pc = tabla_etiquetas.indice[pc_dest].n_instruccion;
 	else
 		return;
 
@@ -207,7 +209,7 @@ void beqz(int pc_dest)
 void bltz(int pc_dest)
 {	
 	if(pc_dest < 0)
-		pc=labels.label[pc_dest].inst_num;
+		pc=tabla_etiquetas.indice[pc_dest].n_instruccion;
 	else
 		return;
 
@@ -216,17 +218,16 @@ void bltz(int pc_dest)
 
 void syscall()
 {
-	if(registros[2].val==1)
+	if(registros[2].data==1)
 	{
-
-		printf("%d\n",reg_file[4].val);		
+		printf("%d\n",registros[4].data);		
 	}
-	else if(registros[2].val==5)
+	else if(registros[2].data==5)
 	{
-		scanf("%d",&registros[2].val);
+		scanf("%d",&registros[2].data);
 
 	}
-	else if(registros[2].val==10)
+	else if(registros[2].data==10)
 	{
 
 		exit(0);
