@@ -5,24 +5,23 @@
 
 #include "memoria/memoria.h"
 
-long memoria_usuario_bytes(int argc, char** argv);
+int memoria_usuario_bytes(int argc, char** argv);
 void print_help();
 
 main (int argc, char **argv)
 {
 
 	int lmt_mem = memoria_usuario_bytes(argc, argv);
-	memoria_ram ram* = init_ram(lmt_mem);
-
-
-	
+	memoria_ram *ram = init_ram(lmt_mem);
 	guardar_ram(5, ram, "aaa", 5646545);
+	guardar_ram(12047, ram, "bb", 5646545);
 	int i = get_index_ram("aaa", ram);
+	int j= get_index_ram("bb", ram);
 	printf("%d\n",i);
 
 }
 
-long 
+int 
 memoria_usuario_bytes(int argc, char** argv)
 {
 	if (argc < 2) {
@@ -55,8 +54,11 @@ memoria_usuario_bytes(int argc, char** argv)
 				print_help ();
 		}
 
-	char *nchr;
-	long mem = strtol(str_memoria, &nchr, 10);
+	int mem = -1;
+	
+	if (str_memoria != NULL)
+		sscanf(str_memoria, "%d", &mem);
+
 	return mem;	
 }
 
