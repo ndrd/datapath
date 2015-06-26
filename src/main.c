@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #include "memoria/memoria.h"
+#include "registros/registros.h"
 
 int memoria_usuario_bytes(int argc, char** argv);
 void print_help();
@@ -12,12 +13,17 @@ main (int argc, char **argv)
 {
 
 	int lmt_mem = memoria_usuario_bytes(argc, argv);
+	/* construimos la memoria ram */
 	memoria_ram *ram = init_ram(lmt_mem);
+	/* inicializamos los registros */
+	iniciar_registros();
+
 	guardar_ram(5, ram, "aaa", 5646545);
 	guardar_ram(12047, ram, "bb", 5646545);
 	int i = get_index_ram("aaa", ram);
-	int j= get_index_ram("bb", ram);
+	int j = get_index_ram("bb", ram);
 	printf("%d\n",i);
+	printf("%dss\n",j);
 
 }
 

@@ -1,11 +1,7 @@
-ISRC=src/main.c src/memoria/memoria.c  \
-<<<<<<< HEAD
-  src/registros/registros.c src/errores/errores.c \
-  src/alu/alu.c
-=======
-  src/registros/registros.c src/errores/errores.c
-  src/operaciones/operaciones.c src/lector.c
->>>>>>> origin/master
+SRC=src/main.c src/memoria/memoria.c  \
+src/errores/errores.c src/registros/registros.c
+
+
 MAIN=main.c
 BIN=myvm
 CFLAGS=-g

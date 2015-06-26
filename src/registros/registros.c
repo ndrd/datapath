@@ -1,11 +1,10 @@
 #include "registros.h"
+#include "../errores/errores.h"
 
-struct registro registros[14];
+registro registros[14];
 
-void iniciar_registro()
+void iniciar_registros()
 {
-	
-
 	strcpy(registros[0].nombre, "r0");
 	strcpy(registros[1].nombre, "r1");
 	strcpy(registros[2].nombre, "r2");
@@ -20,7 +19,6 @@ void iniciar_registro()
 	strcpy(registros[11].nombre, "ra");
 	strcpy(registros[12].nombre, "pc");
 	strcpy(registros[13].nombre, "p");
-	
 	return;
 }
 
@@ -34,18 +32,12 @@ int n_registro(char* nombre)
 		return nombre[0]-'0';
 	//Si es el nombre,buscamos el nombre en la lista de registros
 	// para encontrar el numero
-	for(i=0 ; i< 14 ; i++)
+	for (i = 0 ; i < 14 ; i++)
 	{		
 		if(!strcmp(registros[i].nombre, nombre))
-			break;
+			return i;
 	}
 	
-	if(i != 14)
-		return i;
-	else 
-	{
-		fprintf(stderr, "%d es un registro invalido", i);
-		printf("Syntax error. %s : no existe ese registro",nombre);
-		exit(1);				
-	} 
+	if(i == 14)
+		tirar_error(REGISTRO_INVALIDO);
 }

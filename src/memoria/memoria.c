@@ -7,8 +7,6 @@ void guardar_ram (int i, memoria_ram *memoria, char *nombre, int data)
 	if (i < 0)
 		return;
 
-	printf("%d\n", memoria->limite/4);
-
 	/* enteros de 4 bytes */
 	if(i >= memoria->limite/4)
 	{
@@ -27,7 +25,6 @@ int get_index_ram (char *nombre, memoria_ram *memoria)
 		return -1;
 
 	for (int i = 0; i < memoria->limite; i++) {
-		printf("%s\n", memoria->rows[i].nombre);
 		if (!strcmp(nombre, memoria->rows[i].nombre))
 			return i;
 	}

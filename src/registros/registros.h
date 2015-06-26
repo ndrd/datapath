@@ -1,21 +1,20 @@
 #ifndef REGISTROS_H_INCLUDED
 #define REGISTROS_H_INCLUDED
 
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
-struct registro
+typedef struct 
 {
 	char nombre[4];			
-	void *valor;
-};
+	int valor;
+} registro;
 
-extern struct registro reg_file[14];
+extern registro registros[14];
 
 
-void iniciar_registro();	 
+void iniciar_registros(void);	 
 int n_registro(char *nombre);	//Regresa el numero del registro cuando le dan el nombre
 
 #endif 	
