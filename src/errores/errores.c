@@ -3,13 +3,7 @@
 #include "../registros/registros.h"
 
 void
-tirar_error (int clave_error)
+tirar_error (int clave_error, struct memoria_datos *mem)
 {
-
 }
 
-void 
-volcar_memoria (struct memoria_datos *memoria)
-{
-	
-}
