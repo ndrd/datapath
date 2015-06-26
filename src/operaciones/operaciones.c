@@ -89,7 +89,7 @@ void fdiv (float dest,float reg1,float reg2)
 	float a=(reg1<32)?registros[reg1].val:reg1-32;
 	float b=(reg2<32)?registros[reg2].val:reg2-32;
 	if(b <= 0)tirar error(DIVISION_CERO) ;
-	registros[dest].val=a/b;
+	registros[dest].val= a / b;
 	pc++;
 
 	return;
@@ -102,7 +102,7 @@ void and(int dest,int reg1,int reg2)
 	int a=(reg1<32)?registros[reg1].val:reg1-32;
 	int b=(reg2<32)?registros[reg2].val:reg2-32;
 	
-	registros[dest].val=a & b;
+	registros[dest].val = a & b;
 	pc++;
 	return;
 }
@@ -116,7 +116,7 @@ void or(int dest,int reg1,int reg2)
 	int a=(reg1<32)?registros[reg1].val:reg1-32;
 	int b=(reg2<32)?registros[reg2].val:reg2-32;
 	
-	registros[dest].val=a | b;
+	registros[dest].val = a | b;
 	pc++;
 	
 	
@@ -182,6 +182,22 @@ void b(int pc_dest)
 	pc=labels.label[pc_dest].inst_num;
 
 	return;
+}
+void beqz(int pc_dest)
+{	
+	if(pc_dest == 0)
+	pc=labels.label[pc_dest].inst_num;
+else
+	return;
+
+}
+void bltz(int pc_dest)
+{	
+	if(pc_dest < 0)
+	pc=labels.label[pc_dest].inst_num;
+else
+	return;
+
 }
 
 

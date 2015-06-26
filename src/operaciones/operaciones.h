@@ -25,8 +25,8 @@ void sb (int dest,int reg1,int reg2);
 void sw (int dest,int addr,struct data_mem*dm);	
 void li(int dest,int val);
 void b(int num);		
-void beqz (int num);	//supongo que es igual que el salto
-void bltz (int num;		//lo mismo 
+void beqz (int num);	
+void bltz (int num;		
 void syscall();								
 
 
