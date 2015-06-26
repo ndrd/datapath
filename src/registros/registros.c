@@ -6,25 +6,25 @@ void iniciar_registro()
 {
 	
 
-	strcpy(registros[0].nombre,"r0");
-	strcpy(registros[1].nombre,"r1");
-	strcpy(registros[2].nombre,"r2");
-	strcpy(registros[3].nombre,"r3");
-	strcpy(registros[4].nombre,"r4");
-	strcpy(registros[5].nombre,"r5");
-	strcpy(registros[6].nombre,"r6");
-	strcpy(registros[7].nombre,"r7");
-	strcpy(registros[8].nombre,"a0");
-	strcpy(registros[9].nombre,"a1");
-	strcpy(registros[10].nombre,"s0");
-	strcpy(registros[11].nombre,"ra");
-	strcpy(registros[12].nombre,"pc");
-	strcpy(registros[13].nombre,"p");
+	strcpy(registros[0].nombre, "r0");
+	strcpy(registros[1].nombre, "r1");
+	strcpy(registros[2].nombre, "r2");
+	strcpy(registros[3].nombre, "r3");
+	strcpy(registros[4].nombre, "r4");
+	strcpy(registros[5].nombre, "r5");
+	strcpy(registros[6].nombre, "r6");
+	strcpy(registros[7].nombre, "r7");
+	strcpy(registros[8].nombre, "a0");
+	strcpy(registros[9].nombre, "a1");
+	strcpy(registros[10].nombre, "s0");
+	strcpy(registros[11].nombre, "ra");
+	strcpy(registros[12].nombre, "pc");
+	strcpy(registros[13].nombre, "p");
 	
 	return;
 }
 
-int n_registro(char*nombre)
+int n_registro(char* nombre)
 {
 	int i;
 	//Revisa si lo que le pasaron es el numero de registro o su nombre alternativo

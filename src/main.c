@@ -11,7 +11,7 @@ void print_help();
 int
 main (int argc, char **argv)
 {
-	int lmt_mem = memoria_usuario(argc, argv);
+	int lmt_mem = memoria_usuario_bytes(argc, argv);
 	if (lmt_mem < 1)
 		printf("Usando el limite de memoria por defecto\n");
 	else
@@ -20,7 +20,7 @@ main (int argc, char **argv)
 }
 
 long 
-memoria_usuario(int argc, char** argv)
+memoria_usuario_bytes(int argc, char** argv)
 {
 	if (argc < 2) {
 		print_help();

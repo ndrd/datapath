@@ -1,28 +1,29 @@
 #include "memoria.h"
+#include "errores.h"
 
-int LIMITE_MEMORIA_REGISTROS = 1024;
+/* limite en bytes */
+int LIMITE_MEMORIA = 4096;
 
-void guardar(int i, struct registros *registros, char *nombre, int valor)
+void guardar(int i, struct memoria_datos *memoria, char *nombre, int data)
 {
-	if(i >= LIMITE_MEMORIA_REGISTROS)
+	if (i < 0)
+
+	/* enteros de 4 bytes */
+	if(i >= LIMITE_MEMORIA/4)
 	{
-		printf("No hay suficiente espacio");
-		exit(2);				
+		tirar_error(MEMORIA_AGOTADA);
 	}
 		
-	strcpy(registros->mem[i].nombre,nombre);
-	registros->mem[i].valor=valor;
+	strcpy(memoria->mem[i].nombre, nombre);
+	memoria->mem[i].data = data;
 	return;
 }
 
-int get_lugar(char*nombre,struct registros *registros)
+int get_index(char *nombre, struct memoria_datos *memoria)
 {
-	int i;
-	for(i=0; i< LIMITE_MEMORIA_REGISTROS;i++)
-	{
-		if(!strcmp(nombre,registros->mem[i].nombre))
+	for (int i = 0; i < LIMITE_MEMORIA; i++)
+		if (!strcmp(nombre, memoria->mem[i].nombre))
 			return i;
-	}
 	
 	// Si no coincide muestra error
 	printf("Undefined reference : %s", nombre);
@@ -30,5 +31,5 @@ int get_lugar(char*nombre,struct registros *registros)
 
 void set_lim_mem(int lim) 
 {
-	LIMITE_MEMORIA_REGISTROS = lim;
+	LIMITE_MEMORIA = lim;
 }
