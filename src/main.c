@@ -8,20 +8,16 @@
 long memoria_usuario_bytes(int argc, char** argv);
 void print_help();
 
-int
 main (int argc, char **argv)
 {
-	struct memoria_datos *mem = calloc(sizeof(struct celda),1);
 
 	int lmt_mem = memoria_usuario_bytes(argc, argv);
-	if (lmt_mem < 1)
-		printf("Usando el limite de memoria por defecto\n");
-	else
-		set_lim_mem_ram(lmt_mem);
+	memoria_ram ram* = init_ram(lmt_mem);
+
 
 	
-	guardar_ram(5, mem, "aaa", 5646545);
-	int i = get_index_ram("aaa", mem);
+	guardar_ram(5, ram, "aaa", 5646545);
+	int i = get_index_ram("aaa", ram);
 	printf("%d\n",i);
 
 }

@@ -1,10 +1,8 @@
 #include "memoria.h"
 #include "../errores/errores.h"
 
-/* limite en bytes */
-int LIMITE_MEMORIA = 4096;
 
-void guardar_ram(int i, struct memoria_datos *memoria, char *nombre, int data)
+void guardar_ram (int i, memoria_ram *memoria, char *nombre, int data)
 {
 	if (i < 0)
 
@@ -19,7 +17,7 @@ void guardar_ram(int i, struct memoria_datos *memoria, char *nombre, int data)
 	return;
 }
 
-int get_index_ram(char *nombre, struct memoria_datos *memoria)
+int get_index_ram (char *nombre, memoria_ram *memoria)
 {
 	for (int i = 0; i < LIMITE_MEMORIA; i++)
 		if (!strcmp(nombre, memoria->celdas[i].nombre))
@@ -29,7 +27,11 @@ int get_index_ram(char *nombre, struct memoria_datos *memoria)
 	printf("Undefined reference : %s", nombre);
 }
 
-void set_lim_mem_ram(int lim) 
+memoria_ram *init_ram (int lim) 
 {
-	LIMITE_MEMORIA = lim;
+
+	memoria_ram *ram = calloc(sizeof(memoria_ram), 1);
+	ram->limite = lim;
+	ram->elementos = 0;
+	ram->rows = calloc(sizeof(row), (lim < 1) ? LIMITE_MEMORIA_DEFAULT : lim);
 }

@@ -5,7 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern int LIMITE_MEMORIA;
+/* cada celda almacena 4 bytes */
+#define  LIMITE_MEMORIA_DEFAULT = 1024;
 
 typedef enum {
 	BYTE,
@@ -14,24 +15,28 @@ typedef enum {
 	FLOAT,	
 } type;
 
+typedef struct 
+{	
+	type tipo_dato;
+	/* el nombre de la variable almacenada */
+	char nombre[16];
+	/* int de 32 bits, justo lo que necesitamos */
+	int data;
+} row;
+
 /* representa la memoria de datos puede almacenar */
-struct memoria_datos
+typedef struct 
 {
-	struct celda
-	{	
-		type tipo_dato;
-		/* el nombre de la variable almacenada */
-		char nombre[16];
-		/* int de 32 bits, justo lo que necesitamos */
-		int data;
-	} celdas[1024];
-};
+	int limite;
+	int elementos;
+	row *rows;
+} memoria_ram;
 
 /* almacena el dato dentro de la memoria, de la mano del nombre de la variable que se le asigno */
-void guardar_ram(int index, struct memoria_datos *memoria, char *nombre, int data);
+void guardar_ram(int index, memoria_ram *memoria, char *nombre, int data);
 /* nos da su posicion dentor del arreglo de la memoria */
-int get_index_ram(char *nombre, struct memoria_datos *memoria);
+int get_index_ram(char *nombre, memoria_ram *memoria);
 /* establece el limite de la memoria */
-void set_lim_mem_ram(int lim);
+memoria_ram init_ram(int lim);
 
 #endif	
