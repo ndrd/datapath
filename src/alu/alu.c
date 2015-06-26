@@ -1,9 +1,9 @@
-#include "operaciones.h"
-#include "../vm/errores.c"
+#include "alu.h"
+#include "../errores/errores.c"
 #include "../memoria/memoria.h"
 #include "../memoria/memoria.c"
 
-void add(int dest,int reg1,int reg2)
+void add(int dest, int reg1, int reg2)
 {	
 		
 	int a=(reg1<32)?registros[reg1].val:reg1-32;
@@ -17,7 +17,7 @@ void add(int dest,int reg1,int reg2)
  
 void sub(int dest,int reg1,int reg2)
 {	
-		
+
 	int a=(reg1<32)?registros[reg1].val:reg1-32;
 	int b=(reg2<32)?registros[reg2].val:reg2-32;
 	
@@ -26,6 +26,7 @@ void sub(int dest,int reg1,int reg2)
 
 	return;
 }
+
 void mul (int dest,int reg1,int reg2)
 {	
 		
@@ -37,7 +38,7 @@ void mul (int dest,int reg1,int reg2)
 
 	return;
 }	
-void div (int dest,int reg1,int reg2)
+void divi (int dest,int reg1,int reg2)
 {	
 		
 	int a=(reg1<32)?registros[reg1].val:reg1-32;
@@ -138,7 +139,6 @@ void not(int reg1)
  void xor(int dest,int reg1,int reg2)
 {
 		
-			
 	int a=(reg1<32)?registros[reg1].val:reg1-32;
 	int b=(reg2<32)?registros[reg2].val:reg2-32;
 	
@@ -151,10 +151,10 @@ void not(int reg1)
  
  
 
-void li(int dest,int val)
+void li(int dest, int val)
 {
 	
-	registros[dest].val=val;
+	registros[dest].val = val;
 	pc++;
 	
 		
@@ -162,25 +162,22 @@ void li(int dest,int val)
 }
 
 
-void lw(int dest,int addr,struct data_mem*dm)
+void lw(int dest,int addr, memoria_ram *ram)
 {
-
-	registros[dest].val=(dm->celda[addr].val);
+	registros[dest].val=(ram->rows[addr].data);
 	pc++;
 	return;
 }
 
-void sw(int dest,int addr,struct data_mem*dm)
+void sw(int dest, int addr, memoria_ram *ram)
 {
-
-	dm->celda[addr].val=registros[dest].val;
+	ram->rows[addr].data = registros[dest].val;
 	pc++;
 	return;	
 }
 
 void lb(int dest,int addr,struct nombre)
 {
-
 	registros[dest].val=(nombre->celda[addr].val);
 	pc++;
 	return;
@@ -188,40 +185,37 @@ void lb(int dest,int addr,struct nombre)
 
 void sb(int dest,int addr,struct nombre)
 {
-
 	nombre->celda[addr].val=registros[dest].val;
 	pc++;
 	return;	
 }
 
-
 void b(int pc_dest)
 {	
-	pc=labels.label[pc_dest].inst_num;
-
+	pc = labels.label[pc_dest].inst_num;
 	return;
 }
+
 void beqz(int pc_dest)
 {	
-	if(pc_dest == 0)
-	pc=labels.label[pc_dest].inst_num;
-else
-	return;
+	if (pc_dest == 0)
+		pc = labels.label[pc_dest].inst_num;
+	else
+		return;
 
 }
 void bltz(int pc_dest)
 {	
 	if(pc_dest < 0)
-	pc=labels.label[pc_dest].inst_num;
-else
-	return;
+		pc=labels.label[pc_dest].inst_num;
+	else
+		return;
 
 }
 
 
 void syscall()
 {
-
 	if(registros[2].val==1)
 	{
 

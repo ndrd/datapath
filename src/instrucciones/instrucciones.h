@@ -1,9 +1,11 @@
+#ifndef INSTRUCCIONES_H
+#define INSTRUCCIONES_H
+
 #include <stdio.h>
 #include <string.h>
 #include "../memoria/memoria.h"
 #include "../registros/registros.h"
-#include "../operaciones/operaciones.h"
-
+#include "../alu/alu.h"
 
 int pc;
 
@@ -50,18 +52,16 @@ struct tabla_label
 		char name[20];
 		int num_inst;	
 	}label[100];
-}labels;
+} labels;
 int num_label;
 
 
-int* encode(char*input,int*coded,struct memoria_datos*dm,int num);	 
-void decode(int*encoded_inst,struct memoria_datos*dm);	
-
+int* encode(char*input,int*coded, memoria_ram *ram,int num);	 
+void decode(int*encoded_inst, memoria_ram *ram);	
 
 void load_instruccion_mem(struct instruccion_mem*im,int posiscion_mem,int*instruccion);  
-void execute(struct instruccion_mem*im,int fin,struct memoria_datos*dm);
-
+void execute(struct instruccion_mem*im,int fin, memoria_ram *ram);
 
 int posicion_label(char*name);			
 
- #endif 
+#endif 

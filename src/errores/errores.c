@@ -1,4 +1,4 @@
-#include "errores.h"
+#include "../errores/errores.h"
 #include "../memoria/memoria.h"
 #include "../registros/registros.h"
 
