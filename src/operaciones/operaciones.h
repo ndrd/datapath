@@ -1,5 +1,5 @@
-#ifndef OPERATIONS_H_INCLUDED
-#define OPERATIONS_H_INCLUDED
+#ifndef OPERACIONES_H
+#define OPERACIONES_H
 
 #include "../registros/registros.h"
 #include "../memoria/memoria.h"
@@ -30,5 +30,5 @@ void bltz (int num;		//lo mismo
 void syscall();								
 
 
- #endif		//End of file
+ #endif		
 
