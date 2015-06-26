@@ -15,10 +15,10 @@ void fadd (float dest,float reg1,float reg2);
 void fsub (float dest,float reg1,float reg2);		
 void fmul (float dest,float reg1,float reg2);	
 void fdiv (float dest,float reg1,float reg2);		
-void and(int dest,int reg1,int reg2);	//no se que pide pero supongo que eso	
-void or (int dest,int reg1,int reg2);	// tampoco se	
-void xor (int dest,int reg1,int reg2);	// tampoco se	
-void not (int dest,int reg1,int reg2);		
+void and(int dest,int reg1,int reg2);		
+void or (int dest,int reg1,int reg2);	
+void xor (int dest,int reg1,int reg2);	
+void not (int num);		
 void lb (int dest,int reg1,int reg2);		
 void lw (int dest,int addr,struct data_mem*dm);	
 void sb (int dest,int reg1,int reg2);	
