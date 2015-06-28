@@ -41,8 +41,7 @@ struct instruccion
 	char*c;
 } ;
 
-
-struct 
+typedef struct 
 {
 	struct instruccion rows[LIMITE_MEMORIA_INSTRUCCIONES];
 } memoria_instrucciones;
@@ -65,8 +64,8 @@ int num_label;
 int* encode(char*input,int*coded, memoria_ram *ram,int num);	 
 void decode(int*encoded_inst, memoria_ram *ram);	
 
-void load_instruccion_mem(struct instruccion_mem*im,int posiscion_mem,int*instruccion);  
-void execute(struct instruccion_mem*im,int fin, memoria_ram *ram);
+void load_instruccion_mem(struct memoria_instrucciones*im,int posiscion_mem,int*instruccion);  
+void execute(struct memoria_instrucciones*im,int fin, memoria_ram *ram);
 
 int posicion_label(char*name);			
 

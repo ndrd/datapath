@@ -9,14 +9,8 @@
 int memoria_usuario_bytes(int argc, char** argv);
 void print_help();
 
-main (int argc, char **argv)
+int main (int argc, char **argv)
 {
-	FILE*f;
-	f = fopen(argv,"r");
-	struct memoria_instrucciones *im = calloc(sizeof(struct memoria_instrucciones),1);
-	memoria_ram *mr = calloc(sizeof(memoria_ram),1);
-	int len = read_file(f,im,mr);	
-	fclose(f);
 
 	int lmt_mem = memoria_usuario_bytes(argc, argv);
 	/* construimos la memoria ram */
@@ -30,7 +24,6 @@ main (int argc, char **argv)
 	int j = get_index_ram("bb", ram);
 	printf("%d\n",i);
 	printf("%dss\n",j);
-
 
 }
 
