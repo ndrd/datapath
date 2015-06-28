@@ -1,5 +1,6 @@
 #include "lector.h"
 #include <string.h>
+#include <stdlib.h>
 
 int primer_char(char*linea)
 {
@@ -13,7 +14,7 @@ int primer_char(char*linea)
 	 	return i;
 }
 
-int read_file(FILE*archivo,struct instruccion_mem*im, memoria_ram *ram)
+int read_file(FILE*archivo,struct instruccion_mem*im,memoria_ram *ram)
 {	
 
 	char linea[100],temp[100];
