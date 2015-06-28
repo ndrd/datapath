@@ -2,7 +2,6 @@ SRC=src/main.c src/memoria/memoria.c  \
 src/errores/errores.c src/registros/registros.c \
 src/alu/alu.c src/lector/lector.c
 
-
 MAIN=main.c
 BIN=myvm
 CFLAGS=-g
