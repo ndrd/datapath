@@ -31,7 +31,8 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 
 	while(pc <= mar->n)
 	{
-		ejecuta_instruccion(pc, &mar->rows[pc++], ram, &total_de_ciclos);
+		ejecuta_instruccion(pc, &mar->rows[pc], ram, &total_de_ciclos);
+		pc++;
 	}
 	printf("Total de cilcos %d\n", total_de_ciclos);
 }

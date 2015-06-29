@@ -12,6 +12,10 @@
 
 int pc;
 
+/*
+
+*/
+
 #define ADD 		0x00	
 #define SUB 		0x01
 #define MUL 		0x02		
