@@ -4,8 +4,8 @@
 void add(int dest, int reg1, int reg2)
 {	
 		
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 	registros[dest].data=a+b;
 	pc++;
 
@@ -16,8 +16,8 @@ void add(int dest, int reg1, int reg2)
 void sub(int dest,int reg1,int reg2)
 {	
 
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 	
 	registros[dest].data=a-b;
 	pc++;
@@ -28,8 +28,8 @@ void sub(int dest,int reg1,int reg2)
 void mul (int dest,int reg1,int reg2)
 {	
 		
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 	
 	registros[dest].data=a*b;
 	pc++;
@@ -39,8 +39,8 @@ void mul (int dest,int reg1,int reg2)
 void divi (int dest,int reg1,int reg2)
 {	
 		
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 
 	if(b <= 0)
 		tirar_error(DIVISION_CERO) ;
@@ -55,8 +55,8 @@ void divi (int dest,int reg1,int reg2)
 void fadd(int dest,int reg1,int reg2)
 {	
 		
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 	registros[dest].data=a+b;
 	pc++;
 
@@ -67,8 +67,8 @@ void fadd(int dest,int reg1,int reg2)
 void fsub(int dest,int reg1,int reg2)
 {	
 		
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 	
 	registros[dest].data=a-b;
 	pc++;
@@ -78,8 +78,8 @@ void fsub(int dest,int reg1,int reg2)
 void fmul (int dest,int reg1,int reg2)
 {	
 		
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 
 	registros[dest].data=a*b;
 	pc++;
@@ -89,8 +89,8 @@ void fmul (int dest,int reg1,int reg2)
 void fdiv (int dest,int reg1,int reg2)
 {	
 		
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 	if(b <= 0)
 		tirar_error(DIVISION_CERO) ;
 	registros[dest].data= a / b;
@@ -103,8 +103,8 @@ void fdiv (int dest,int reg1,int reg2)
 void and(int dest,int reg1,int reg2)
 {	
 
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 	
 	registros[dest].data = a & b;
 	pc++;
@@ -117,8 +117,8 @@ void or(int dest,int reg1,int reg2)
 {
 		
 			
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 	
 	registros[dest].data = a | b;
 	pc++;
@@ -130,7 +130,7 @@ void or(int dest,int reg1,int reg2)
 void not(int reg1)
 {
 				
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
+	int a=registros[reg1].data;
 	
 	a = -a;
 	pc++;
@@ -141,8 +141,8 @@ void not(int reg1)
  void xor(int dest,int reg1,int reg2)
 {
 		
-	int a=(reg1<32)?registros[reg1].data:reg1-32;
-	int b=(reg2<32)?registros[reg2].data:reg2-32;
+	int a=registros[reg1].data;
+	int b=registros[reg2].data;
 	
 	registros[dest].data= ((a + b) * ((-a) + (-b))) ;
 	pc++;

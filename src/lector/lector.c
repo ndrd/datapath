@@ -6,7 +6,7 @@
 void showbits(unsigned int x);
 
 
-int cargar_binario(FILE *archivo, memoria_instrucciones *im, memoria_ram *ram) 
+int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram) 
 {
 	
 	int i = 0;
@@ -21,15 +21,28 @@ int cargar_binario(FILE *archivo, memoria_instrucciones *im, memoria_ram *ram)
 			unsigned int dato = 0;
 			fread(&r1, 1, 1, archivo);
 			fread(&dato, 4 , 1, archivo);
-			printf("%d -  %d - %d \n", instruccion, (r1 ) & 0x000000ff, (dato >> 24) & 0x000000FF);
-			
+
+			r1 = r1  & 0x000000ff;
+			dato = (dato >> 24) & 0x000000ff;
+
+			printf("%d -  %d - %d \n", instruccion, r1 , dato );
+			agrega_instruccion(mar, crea_instruccion_i(instruccion, r1 , dato));
 		} else {
 			fread(&r1, 1, 1, archivo);
 			fread(&r2, 1, 1, archivo);
 			fread(&r3, 1, 1, archivo);
-			printf("%d -  %d - %d - %d\n",instruccion, (r1) & 0x000000ff, r2 & 0x000000ff, r3& 0x000000ff );
+
+			r1 = (r1 & 0x000000ff);
+			r2 = (r2 & 0x000000ff);
+			r3 =  (r3& 0x000000ff);
+
+			printf("%d -  %d - %d - %d\n",instruccion, r1, r2, r3 );
+			agrega_instruccion(mar, crea_instruccion_r(instruccion, r1, r2, r3));
+
 		}
 	}
+
+	printf("Instrucciones procesadas %d\n", mar->n);
 		
 	return 0;
 	

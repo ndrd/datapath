@@ -9,7 +9,7 @@ memoria_instrucciones
 }
 
 instruccion 
-*crea_instruccion_r(int op, int r1, int r2, int r3)
+*crea_instruccion_r (int op, int r1, int r2, int r3)
 {
 	instruccion *instr =  calloc(1, sizeof(instruccion));
 	instr->tipo = R;
@@ -35,13 +35,12 @@ instruccion
 instruccion 
 *crea_instruccion_j(int op, int label)
 {
-	instruccion *instr =  calloc(1, sizeof(instruccion));
+	instruccion *instr;//=  calloc(sizeof(instruccion),1);
 	instr->tipo = J;
 	instr->r2 = label;
 	instr->opcode = op;
 	return instr;
 }
-
 
 
 
@@ -51,12 +50,13 @@ void dump_instruccion(instruccion *inst)
 		printf("La instruccion es nula\n"); 
 		return;
 	}
-	printf("OP: %c\n", inst->opcode );
-	printf("TP: %c\n", (inst->tipo == R) ? 'R' : (inst->tipo == J) ? 'J' : 'I');
-	printf("R1: %c\n", inst->r1 );
-	printf("R2: %c\n", inst->r2 );
-	printf("R3: %c\n", inst->r3 );
-	printf("DT: %c\n", inst->dato );
+	printf("OP: %d\n", inst->opcode );
+	printf("TP: %d\n", (inst->tipo == R) ? 'R' : (inst->tipo == J) ? 'J' : 'I');
+	printf("R1: %d\n", inst->r1 );
+	printf("R2: %d\n", inst->r2 );
+	printf("R3: %d\n", inst->r3 );
+	printf("DT: %d\n", inst->dato );
+	printf("\n");
 }
 
 
@@ -64,5 +64,11 @@ void
 agrega_instruccion(memoria_instrucciones *mar, instruccion *ins)
 {
 	mar->rows[mar->n].opcode = ins->opcode;
-	free(ins);
+	mar->rows[mar->n].tipo = ins->tipo;
+	mar->rows[mar->n].r1 = ins->r1;
+	mar->rows[mar->n].r2 = ins->r2;
+	mar->rows[mar->n].r3 = ins->r3;
+	mar->rows[mar->n].dato = ins->dato;
+	mar->n++;
+	//free(ins);
 }
