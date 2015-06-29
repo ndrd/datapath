@@ -8,7 +8,7 @@
 #include "../instrucciones/instrucciones.h"
 #include "../memoria/memoria.h"
 
-int read_file(FILE*archivo, memoria_instrucciones *im, memoria_ram *ram);   
+int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram);   
  
 
 #endif 	

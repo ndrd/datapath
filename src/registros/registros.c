@@ -38,6 +38,5 @@ int n_registro(char* nombre)
 			return i;
 	}
 	
-	if(i == 14)
-		tirar_error(REGISTRO_INVALIDO);
+	return tirar_error(REGISTRO_INVALIDO);
 }

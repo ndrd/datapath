@@ -216,7 +216,7 @@ void bltz(int pc_dest)
 }
 
 
-void syscall()
+void syscalli()
 {
 	if(registros[2].data==1)
 	{

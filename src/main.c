@@ -1,29 +1,33 @@
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-#include "memoria/memoria.h"
-#include "registros/registros.h"
+#include "simulador.h"
 
 int memoria_usuario_bytes(int argc, char** argv);
 void print_help();
 
 int main (int argc, char **argv)
 {
-
 	int lmt_mem = memoria_usuario_bytes(argc, argv);
 	/* construimos la memoria ram */
 	memoria_ram *ram = init_ram(lmt_mem);
 	/* inicializamos los registros */
 	iniciar_registros();
+	/* memoria de los registros */
+	memoria_instrucciones *mar = init_mar();// = init_mar();
+	/* leemos el archivo binario de 32 en 32 registros */
+	if (argc != 4) {
+		print_help();
+		return	0;
+	}
 
-	guardar_ram(5, ram, "aaa", 5646545);
-	guardar_ram(12047, ram, "bb", 5646545);
-	int i = get_index_ram("aaa", ram);
-	int j = get_index_ram("bb", ram);
-	printf("%d\n",i);
-	printf("%dss\n",j);
+	FILE *archivo = NULL;
+	archivo = fopen(argv[3], "rb");
+	
+	if (archivo == NULL) {
+		printf("archivo invalido\n"); 	
+	} else {
+		run_simulator(ram, mar, archivo);
+	}
+
+	return (0);
 
 }
 

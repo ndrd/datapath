@@ -20,7 +20,7 @@
 #define OPERACION_INVALIDA		5
 #define LLAMADA_SYS_INVALIDA	6	
 
-void tirar_error (int clave_error);
+int tirar_error (int clave_error);
 void volcar_memoria();
 
 #endif

@@ -31,6 +31,7 @@ int get_index_ram (char *nombre, memoria_ram *memoria)
 	
 	// Si no coincide muestra error
 	printf("Undefined reference : %s", nombre);
+	return 0;
 }
 
 /* Inicializa una memoria ram de un tamanio dado en bytes */

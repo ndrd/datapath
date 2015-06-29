@@ -4,12 +4,12 @@
 #include <cstring> 
 
 AsmCodeGen::AsmCodeGen(deque<Instr>& code, 
-		       deque<int>& deferred, 
-		       deque<char*>& deferredid,
-		       deque<ProcEntry>& proc, 
-		       deque<StrEntry>& strings,
-		       int codeSize)
-  : current(code.front()){
+ deque<int>& deferred, 
+ deque<char*>& deferredid,
+ deque<ProcEntry>& proc, 
+ deque<StrEntry>& strings,
+ int codeSize)
+: current(code.front()){
   this -> code = code;
   this -> deferred = deferred;
   this -> deferredid = deferredid;
@@ -47,27 +47,27 @@ void AsmCodeGen::buildCodeSection(){
     if(opc == LI){
       int addr;
       if(pos == deferred.front()){
-	addr = lookup(deferredid.front());
-	deferred.pop_front();
-	deferredid.pop_front();
-      } else {
-	addr = i.getCval();
-      }
-      codeSection[codepos++] = opc;
-      codeSection[codepos++] = i.getDest();
-      codeSection[codepos++] = (addr & 0xFF000000) >> 24;
-      codeSection[codepos++] = (addr & 0x00FF0000) >> 16;
-      codeSection[codepos++] = (addr & 0x0000FF00) >> 8;
-      codeSection[codepos++] = addr & 0x000000FF;
-      pos += 6;
-    } else {
-      codeSection[codepos++] = opc;
-      codeSection[codepos++] = i.getDest();
-      codeSection[codepos++] = i.getOp1();
-      codeSection[codepos++] = i.getOp2();
-      pos += 4;
-    }
+       addr = lookup(deferredid.front());
+       deferred.pop_front();
+       deferredid.pop_front();
+     } else {
+       addr = i.getCval();
+     }
+     codeSection[codepos++] = opc;
+     codeSection[codepos++] = i.getDest();
+     codeSection[codepos++] = (addr & 0xFF000000) >> 24;
+     codeSection[codepos++] = (addr & 0x00FF0000) >> 16;
+     codeSection[codepos++] = (addr & 0x0000FF00) >> 8;
+     codeSection[codepos++] = addr & 0x000000FF;
+     pos += 6;
+   } else {
+    codeSection[codepos++] = opc;
+    codeSection[codepos++] = i.getDest();
+    codeSection[codepos++] = i.getOp1();
+    codeSection[codepos++] = i.getOp2();
+    pos += 4;
   }
+}
 }
 
 void AsmCodeGen::buildDataSection(){
@@ -85,20 +85,20 @@ void AsmCodeGen::buildDataSection(){
       l++;
       int i = 0;
       if(actual != NULL){
-	while(i < l){
-	  strSection[pos++] = actual[i++];
-	}
-	strSection[pos-1] = '\0';
-      } else {
-	while(i++ < l){
-	  strSection[pos++] = '\0';
-	}
-      }
-    }
-  } else {
-    strSectionSize = 0;
-    strSection = NULL;
-  }
+       while(i < l){
+         strSection[pos++] = actual[i++];
+       }
+       strSection[pos-1] = '\0';
+     } else {
+       while(i++ < l){
+         strSection[pos++] = '\0';
+       }
+     }
+   }
+ } else {
+  strSectionSize = 0;
+  strSection = NULL;
+}
 }
 
 bool AsmCodeGen::cgenErrors() const {

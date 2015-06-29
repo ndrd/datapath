@@ -1,6 +1,7 @@
 SRC=src/main.c src/memoria/memoria.c  \
 src/errores/errores.c src/registros/registros.c \
-src/alu/alu.c src/lector/lector.c
+src/alu/alu.c src/lector/lector.c src/instrucciones/instrucciones.c \
+
 
 MAIN=main.c
 BIN=myvm

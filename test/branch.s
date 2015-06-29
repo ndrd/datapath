@@ -1,4 +1,4 @@
-;btest
+	;btest
 .text
 main:                         ; Inicia el codigo del programa
 

@@ -1,4 +1,4 @@
-;inttest
+	;inttest
 .text               
 main:               ; Inicia el codigo del programa
 li $r0, 1           ; r0=1
