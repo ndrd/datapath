@@ -70,5 +70,4 @@ agrega_instruccion(memoria_instrucciones *mar, instruccion *ins)
 	mar->rows[mar->n].r3 = ins->r3;
 	mar->rows[mar->n].dato = ins->dato;
 	mar->n++;
-	//free(ins);
 }
