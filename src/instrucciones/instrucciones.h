@@ -63,8 +63,6 @@ typedef enum {
 	R, I, J
 } tipo_instruccion;
 
-
-
 typedef struct 
 {
 	tipo_instruccion tipo;

@@ -63,7 +63,7 @@ void dump_instruccion(instruccion *inst)
 void 
 agrega_instruccion(memoria_instrucciones *mar, instruccion *ins)
 {
-	mar->rows[mar->n].opcode = ins->opcode;
+	mar->rows[mar->n].opcode = ins->opcode;
 	mar->rows[mar->n].tipo = ins->tipo;
 	mar->rows[mar->n].r1 = ins->r1;
 	mar->rows[mar->n].r2 = ins->r2;
