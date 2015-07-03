@@ -51,7 +51,7 @@ void dump_instruccion(instruccion *inst)
 		return;
 	}
 	printf("OP: %d\n", inst->opcode );
-	printf("TP: %d\n", (inst->tipo == R) ? 'R' : (inst->tipo == J) ? 'J' : 'I');
+	printf("TP: %c\n", (inst->tipo == R) ? 'R' : (inst->tipo == J) ? 'J' : 'I');
 	printf("R1: %d\n", inst->r1 );
 	printf("R2: %d\n", inst->r2 );
 	printf("R3: %d\n", inst->r3 );

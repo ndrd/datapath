@@ -155,10 +155,9 @@ void not(int reg1)
 
 void li(int dest, int val)
 {
-	
+	printf("%d\n",dest );
 	registros[dest].data = val;
-	pc++;
-	
+	pc++;	
 		
 	return;
 }
