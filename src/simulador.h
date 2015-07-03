@@ -37,6 +37,7 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 
 void ejecuta_instruccion(int pc, instruccion *instr, memoria_ram *ram, int *total_de_ciclos)
 {
+		volcar_memoria();
 
 	int dest = instr->r3;
 	int reg1 = instr->r1;
