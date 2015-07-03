@@ -28,13 +28,18 @@ tirar_error (int clave_error)
 	 		break;
 	 }
 
-	printf("%s %d\n",nombre, 	clave_error );
+	printf("%s %d\n",nombre, clave_error );
 	exit(clave_error);
 	return	clave_error;
 }
 
 void volcar_memoria() {
-	for (int i = 0; i < 14; i++) {
+	for (int i = 0; i < 14; i++) 
+	{
 		printf("Registro %s %d valor: %d\n", registros[i].nombre, i, registros[i].data);
 	}
+	for (int i = 0; i < ram->n; i++)
+	 { 		
+		printf("Ram %d\n"ram ->rows[i]); 	
+	} 
 }
