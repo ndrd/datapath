@@ -223,25 +223,25 @@ void syscalli()
 	{ 
 		scanf("%d",&registros[8].data);
 		registros[10].data = registros[8].data;
-		prinftf("entero leido");
+		prinftf("%d",registros[10].data);
 	}
 	if(registros[8].data==1)
 	{ 
 		scanf("%d",&registros[8].data);
 		registros[10].data = registros[8].data;
-		prinftf("caracter leido");
+		prinftf("caracter leido:%d",registros[10].data);
 	}
 	if(registros[8].data==2)
 	{ 
 		scanf("%d",&registros[8].data);
 		registros[10].data = registros[8].data;
-		prinftf("numero leido");
+		prinftf("numero leido:%d",registros[10].data);
 	}
 	if(registros[8].data==3)
 	{ 
 		scanf("%d",&registros[8].data);
 		registros[10].data = registros[8].data;
-		prinftf("numero de caracteres leido");
+		prinftf("numero de caracteres leido:%d",registros[10].data);
 	}
 
 	if(registros[9].data==4)
