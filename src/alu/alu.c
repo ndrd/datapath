@@ -41,6 +41,7 @@ void divi (int dest,int reg1,int reg2)
 		
 	int a=registros[reg1].data;
 	int b=registros[reg2].data;
+	printf("no, es\n");
 
 	if(b <= 0)
 		tirar_error(DIVISION_CERO) ;
@@ -91,6 +92,7 @@ void fdiv (int dest,int reg1,int reg2)
 		
 	int a=registros[reg1].data;
 	int b=registros[reg2].data;
+	printf("es aqui\n");
 	if(b <= 0)
 		tirar_error(DIVISION_CERO) ;
 	registros[dest].data= a / b;
@@ -155,7 +157,7 @@ void not(int reg1)
 
 void li(int dest, int val)
 {
-	printf("%d\n",dest );
+	printf("%d\n",dest);
 	registros[dest].data = val;
 	pc++;	
 		

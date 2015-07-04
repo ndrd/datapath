@@ -37,10 +37,9 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 
 void ejecuta_instruccion(int pc, instruccion *instr, memoria_ram *ram, int *total_de_ciclos)
 {
-	//volcar_memoria();
-	dump_instruccion(instr);
+	volcar_memoria();
 
-	int dest = instr->r3;
+	int dest = instr->r1;
 	int reg1 = instr->r1;
 	int reg2 = instr->r2;
 	int num = instr->dato;
@@ -151,6 +150,7 @@ void ejecuta_instruccion(int pc, instruccion *instr, memoria_ram *ram, int *tota
 			syscalli();
 			*(total_de_ciclos) += C_SYSCALL;
 			printf("C_SYS %d %d %d \n", dest, reg1, reg2);
+
 		break;
 	}
 	printf("--------------------------\n");

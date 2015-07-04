@@ -29,6 +29,8 @@ tirar_error (int clave_error)
 	 }
 
 	printf("%s %d\n",nombre, 	clave_error );
+		volcar_memoria();
+
 	exit(clave_error);
 	return	clave_error;
 }
