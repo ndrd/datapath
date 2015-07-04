@@ -219,6 +219,59 @@ void bltz(int pc_dest)
 
 void syscalli()
 {
+	if(registros[8].data==0)
+	{ 
+		scanf("%d",&registros[8].data);
+		registros[10].data = registros[8].data;
+		prinftf("entero leido");
+	}
+	if(registros[8].data==1)
+	{ 
+		scanf("%d",&registros[8].data);
+		registros[10].data = registros[8].data;
+		prinftf("caracter leido");
+	}
+	if(registros[8].data==2)
+	{ 
+		scanf("%d",&registros[8].data);
+		registros[10].data = registros[8].data;
+		prinftf("numero leido");
+	}
+	if(registros[8].data==3)
+	{ 
+		scanf("%d",&registros[8].data);
+		registros[10].data = registros[8].data;
+		prinftf("numero de caracteres leido");
+	}
+
+	if(registros[9].data==4)
+	{ 
+		scanf("%d",&registros[9].data);
+		registros[9].data = registros[9].data;
+		prinftf("%d\n",registros[9].data);
+	}
+	if(registros[9].data==5)
+	{ 
+		scanf("%d",&registros[9].data);
+		registros[9].data = registros[9].data;
+		prinftf("%d\n",registros[9].data);
+	}
+	if(registros[9].data==6)
+	{ 
+		scanf("%d",&registros[9].data);
+		registros[9].data = registros[9].data;
+		prinftf("%d\n",registros[9].data);
+	}
+	if(registros[9].data==7)
+	{ 
+		scanf("%d",&registros[9].data);
+		registros[9].data = registros[9].data;
+		prinftf("%d\n",registros[9].data);
+	}
+	if(registros[10].data==8)
+	{ 
+		exit(0);
+	}
 	if(registros[2].data==1)
 	{
 		printf("%d\n",registros[4].data);		
