@@ -37,11 +37,11 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 
 void ejecuta_instruccion(int pc, instruccion *instr, memoria_ram *ram, int *total_de_ciclos)
 {
+	dump_instruccion(instr);
 	volcar_memoria();
-
-	int dest = instr->r1;
-	int reg1 = instr->r1;
-	int reg2 = instr->r2;
+	int dest =  instr->r1;
+	int reg1 = instr->r2;
+	int reg2 = instr->r3;
 	int num = instr->dato;
 	int val = num;
 	

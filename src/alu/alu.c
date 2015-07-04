@@ -4,8 +4,9 @@
 void add(int dest, int reg1, int reg2)
 {	
 		
-	int a=registros[reg1].data;
-	int b=registros[reg2].data;
+	int a = registros[reg1].data;
+	int b = registros[reg2].data;
+	printf("%d + %d\n",a,b );
 	registros[dest].data=a+b;
 	pc++;
 
