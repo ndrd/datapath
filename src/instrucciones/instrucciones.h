@@ -78,12 +78,14 @@ typedef struct
 {
 	int pc;
 	int n;
+	char * byte_code;
 	instruccion rows[LIMITE_MEMORIA_INSTRUCCIONES];// = calloc(LIMITE_MEMORIA_INSTRUCCIONES, sizeof(instruccion));
 } memoria_instrucciones;
 
 struct etiqueta {
 	char nombre[20];
-	int n_instruccion;	
+	int n_instruccion;
+	int byte_dir;	
 };
 
 int num_label;
@@ -91,16 +93,19 @@ int num_label;
 struct 
 {
 	int limite;
+	int n;
 	struct etiqueta indice[100];
 
 } tabla_etiquetas;
 
-memoria_instrucciones *init_mar();	
 
+memoria_instrucciones *init_mar();	
 //instruccion *crea_instruccion_r();
 instruccion *crea_instruccion_r(int opcode, int r1, int r2, int r3);
 instruccion *crea_instruccion_i(int instruccion, int r1,  int dato); 
-instruccion *crea_instruccion_j(int instruccion,  int ubicacion) ;
+instruccion *crea_instruccion_j(int instruccion,  int ubicacion);
+
+int get_n_instruccion(memoria_instrucciones *mar, int byte_addr);
 
 void agrega_instruccion(memoria_instrucciones *mar, instruccion *instruccion);
 void dump_instruccion(instruccion *ins);

@@ -12,11 +12,13 @@ int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram)
 	int i = 0;
 	char instruccion = '0';
 
+	char *stack;
+	int n_stacks = 0;
 	/* leemos los 32 bits */
+
 	while(1 == fread(&instruccion, 1, 1, archivo))
 	{
 		int r1,r2,r3;
-
 		if (instruccion == LI) {
 			unsigned int dato = 0;
 			fread(&r1, 1, 1, archivo);
@@ -24,8 +26,12 @@ int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram)
 
 			r1 = r1  & 0x000000ff;
 			dato = (dato >> 24) & 0x000000ff;
-
+			n_stacks += 5;
 			printf("%d -  %d - %d \n", instruccion, r1 , dato );
+
+			tabla_etiquetas.indice[tabla_etiquetas.n].n_instruccion = mar->n;
+			tabla_etiquetas.indice[tabla_etiquetas.n++].byte_dir = dato;
+
 			agrega_instruccion(mar, crea_instruccion_i(instruccion, r1 , dato));
 		} else {
 			fread(&r1, 1, 1, archivo);
@@ -42,7 +48,7 @@ int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram)
 		}
 	}
 
-	printf("Instrucciones procesadas %d\n", mar->n);
+	printf("Instrucciones procesadas %d\n", n_stacks);
 		
 	return 0;
 	

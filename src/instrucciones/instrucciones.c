@@ -8,6 +8,8 @@ memoria_instrucciones
 	return mar;
 }
 
+
+
 instruccion 
 *crea_instruccion_r (int op, int r1, int r2, int r3)
 {
@@ -43,6 +45,21 @@ instruccion
 }
 
 
+int get_n_instruccion(memoria_instrucciones *mar, int  byte_dir)
+{
+	int suma_bytes = 0;
+	
+	for (int i = 0; i < mar->n; ++i)
+	{
+		suma_bytes += (mar->rows[i].opcode == LI) ? 6 : 4;
+		if (suma_bytes == byte_dir)
+			return i;
+	}
+
+	return -1;
+}
+
+
 
 void dump_instruccion(instruccion *inst)
 {
@@ -50,14 +67,14 @@ void dump_instruccion(instruccion *inst)
 		printf("La instruccion es nula\n"); 
 		return;
 	}
-	/**
+	
 	printf("OP: %2d\n", inst->opcode );
 	printf("TP: %c\n", (inst->tipo == R) ? 'R' : (inst->tipo == J) ? 'J' : 'I');
 	printf("R1: %2d\n", inst->r1 );
 	printf("R2: %2d\n", inst->r2 );
 	printf("R3: %2d\n", inst->r3 );
 	printf("DT: %2f\n", inst->dato );
-	printf("\n");*/
+	printf("\n");
 }
 
 

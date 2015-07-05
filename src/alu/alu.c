@@ -7,7 +7,7 @@ void add(int dest, int reg1, int reg2)
 	int a = registros[reg1].data;
 	int b = registros[reg2].data;
 	registros[dest].data=a+b;
-	pc++;
+	
 
 	return;
 }
@@ -20,7 +20,7 @@ void sub(int dest,int reg1,int reg2)
 	int b=registros[reg2].data;
 	
 	registros[dest].data=a-b;
-	pc++;
+	
 
 	return;
 }
@@ -32,7 +32,7 @@ void mul (int dest,int reg1,int reg2)
 	int b=registros[reg2].data;
 	
 	registros[dest].data=a*b;
-	pc++;
+	
 
 	return;
 }	
@@ -47,7 +47,7 @@ void divi (int dest,int reg1,int reg2)
 		tirar_error(DIVISION_CERO) ;
 
 	registros[dest].data=a/b;
-	pc++;
+	
 
 	return;
 }
@@ -59,7 +59,7 @@ void fadd(int dest,int reg1,int reg2)
 	int a=registros[reg1].data;
 	int b=registros[reg2].data;
 	registros[dest].data=a+b;
-	pc++;
+	
 
 	return;
 }
@@ -72,7 +72,7 @@ void fsub(int dest,int reg1,int reg2)
 	int b=registros[reg2].data;
 	
 	registros[dest].data=a-b;
-	pc++;
+	
 
 	return;
 }
@@ -83,7 +83,7 @@ void fmul (int dest,int reg1,int reg2)
 	int b=registros[reg2].data;
 
 	registros[dest].data=a*b;
-	pc++;
+	
 
 	return;
 }	
@@ -96,7 +96,7 @@ void fdiv (int dest,int reg1,int reg2)
 	if(b <= 0)
 		tirar_error(DIVISION_CERO) ;
 	registros[dest].data= a / b;
-	pc++;
+	
 
 	return;
 }
@@ -109,7 +109,7 @@ void and(int dest,int reg1,int reg2)
 	int b=registros[reg2].data;
 	
 	registros[dest].data = a & b;
-	pc++;
+	
 	return;
 }
  
@@ -123,7 +123,7 @@ void or(int dest,int reg1,int reg2)
 	int b=registros[reg2].data;
 	
 	registros[dest].data = a | b;
-	pc++;
+	
 	
 	
 	return;
@@ -135,7 +135,7 @@ void not(int reg1)
 	int a=registros[reg1].data;
 	
 	a = -a;
-	pc++;
+	
 	
 	return;
 }
@@ -147,7 +147,7 @@ void not(int reg1)
 	int b=registros[reg2].data;
 	
 	registros[dest].data= ((a + b) * ((-a) + (-b))) ;
-	pc++;
+	
 	
 	
 	return;
@@ -159,7 +159,7 @@ void li(int dest, int val)
 {
 	printf("%d\n",dest);
 	registros[dest].data = val;
-	pc++;	
+		
 		
 	return;
 }
@@ -167,35 +167,35 @@ void li(int dest, int val)
 
 void lw(int dest,int addr, memoria_ram *ram)
 {
-	registros[dest].data=(ram->rows[addr].data);
-	pc++;
+	registros[dest].data = ram->rows[addr].data;
+	
 	return;
 }
 
 void sw(int dest, int addr, memoria_ram *ram)
 {
 	ram->rows[addr].data = registros[dest].data;
-	pc++;
+	
 	return;	
 }
 
 void lb(int dest,int addr,memoria_ram *ram)
 {
 	registros[dest].data=(ram->rows[addr].data);
-	pc++;
+	
 	return;
 }
 
 void sb(int dest,int addr,memoria_ram *ram)
 {
 	ram->rows[addr].data=registros[dest].data;
-	pc++;
+	
 	return;	
 }
 
 void b(int pc_dest)
 {	
-	pc = tabla_etiquetas.indice[pc_dest].n_instruccion;
+	printf("brach to: %d - MemAddr- \n",pc_dest);
 	return;
 }
 
@@ -287,6 +287,6 @@ void syscalli()
 		exit(0);
 	}	
 	
-	pc++;
+	
 	return;	
 }

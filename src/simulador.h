@@ -9,7 +9,7 @@
 #include "lector/lector.h"
 #include "alu/alu.h"
 
-void ejecuta_instruccion(int pc, instruccion *instr, memoria_ram *ram, int *total_de_ciclos);
+int ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, int *total_de_ciclos);
 
 
 void 
@@ -24,21 +24,29 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 	if (mar->n <= 2)
 		printf("Ejecucion terminada correctamente\n");
 
-	int pc = 0;
+	int pc = 2;
 	int total_de_ciclos = 0;
 
-	while(pc <= mar->n)
+	while(1)
 	{
-		ejecuta_instruccion(pc, &mar->rows[pc], ram, &total_de_ciclos);
-		pc++;
+		int exito = ejecuta_instruccion(&pc, mar, ram, &total_de_ciclos);
+		if (exito == 0)
+			break;
 	}
 	printf("Total de ciclos %d\n", total_de_ciclos);
 }
 
-void ejecuta_instruccion(int pc, instruccion *instr, memoria_ram *ram, int *total_de_ciclos)
+int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, int *total_de_ciclos)
 {
-	dump_instruccion(instr);
-	volcar_memoria();
+
+	printf("%d  pc: %d\n", *(pc), mar->n );
+
+	if (*(pc) > mar->n)
+		return 0;
+
+	instruccion *instr =  &mar->rows[*(pc)];
+	//dump_instruccion(instr);
+
 	int dest =  instr->r1;
 	int reg1 = instr->r2;
 	int reg2 = instr->r3;
@@ -49,110 +57,135 @@ void ejecuta_instruccion(int pc, instruccion *instr, memoria_ram *ram, int *tota
 		case ADD:
 			add(dest, reg1, reg2);
 			*(total_de_ciclos) += C_ADD;
+			*(pc) += 1;
 			
 			break;
 		case SUB :
 			sub(dest, reg1, reg2);
 			*(total_de_ciclos) += C_SUB;
+			*(pc) += 1;
 			
 			break;
 		case MUL:
 			mul(dest, reg1, reg2);
 			*(total_de_ciclos) += C_MUL;
+			*(pc) += 1;
 			
 			break;
 		case DIV :
 			divi(dest, reg1, reg2);
 			*(total_de_ciclos) += C_DIV;
+			*(pc) += 1;
 			
 			break;
 		case FADD :
 			fadd(dest, reg1, reg2);
 			*(total_de_ciclos) += C_FADD;
+			*(pc) += 1;
 			
 			break;
 		case FSUB :
 			fsub(dest, reg1, reg2);	
 			*(total_de_ciclos) += C_FSUB;
+			*(pc) += 1;
 			
 			break;
 		case FMUL :
 			fmul(dest, reg1, reg2);
 			*(total_de_ciclos) += C_FMUL;
+			*(pc) += 1;
 			
 			break;
 		case FDIV :
 			fdiv(dest, reg1, reg2);
 			*(total_de_ciclos) += C_FDIV;
+			*(pc) += 1;
 			
 			break;
 		case ANDR:
 			and(dest, reg1, reg2);
 			*(total_de_ciclos) += C_ANDR;
+			*(pc) += 1;
 			
 			break;
 		case OR:
 			or(dest, reg1, reg2);
 			*(total_de_ciclos) += C_OR;
+			*(pc) += 1;
 			
 			break;
 		case XOR :
 			xor(dest, reg1, reg2);
 			*(total_de_ciclos) += C_XOR;
+			*(pc) += 1;
 
 			break;
 		case NOT :
 			not(num);
 			*(total_de_ciclos) += C_NOT;
+			*(pc) += 1;
 			
 			break;
 		case LB:
 			lb(dest,reg1,ram);
 			*(total_de_ciclos) += C_LB;
+			*(pc) += 1;
 			
 			break;
 		case LW:
 			lw(dest,reg1,ram);	
 			*(total_de_ciclos) += C_LW;
+			*(pc) += 1;
 		
 			break;
 		case SB:
 			sb(dest,reg1,ram);
 			*(total_de_ciclos) += C_SB;
+			*(pc) += 1;
 		
 			break;
 		case SW :
 			sw(dest,reg1,ram);
 			*(total_de_ciclos) += C_SW;
+			*(pc) += 1;
 
 			break;
 		case LI:
 			li(dest,val);
 			*(total_de_ciclos) += C_LI;
+			*(pc) += 1;
 			
 			break;
 		case B:
-			b(num);
+			dump_instruccion(instr);
+			int n_instr = get_n_instruccion(mar, registros[instr->r3].data);
+			b(n_instr);
 			*(total_de_ciclos) += C_B;
-			
+			//*(pc) += 1;
+			*(pc) = n_instr;
 			break;
 		case BEQZ :
-			beqz(num);
+			//beqz(num);
 			*(total_de_ciclos) += C_BEQZ;
+			*(pc) += 1;
 			
 			break;
 		case BLTZ :
 			bltz(num);
 			*(total_de_ciclos) += C_BLTZ;
+			*(pc) += 1;
 		
 			break;
 		case SYSCALL:
 			syscalli();
 			*(total_de_ciclos) += C_SYSCALL;
+			*(pc) += 1;
 		
 
 		break;
 	}
+
+	return 1;
 }
 
 
