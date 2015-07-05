@@ -50,13 +50,14 @@ void dump_instruccion(instruccion *inst)
 		printf("La instruccion es nula\n"); 
 		return;
 	}
+	/**
 	printf("OP: %2d\n", inst->opcode );
 	printf("TP: %c\n", (inst->tipo == R) ? 'R' : (inst->tipo == J) ? 'J' : 'I');
 	printf("R1: %2d\n", inst->r1 );
 	printf("R2: %2d\n", inst->r2 );
 	printf("R3: %2d\n", inst->r3 );
 	printf("DT: %2f\n", inst->dato );
-	printf("\n");
+	printf("\n");*/
 }
 
 
