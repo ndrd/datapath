@@ -70,7 +70,7 @@ typedef struct
 	int r1;
 	int r2;
 	int r3;
-	unsigned int dato;
+	float dato;
 	short tiempo_ciclos;
 } instruccion;
 
