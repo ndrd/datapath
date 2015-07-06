@@ -194,7 +194,7 @@ void bltz(int pc_dest)
 
 int syscalli(int total_ciclos)
 {
-	//volcar_memoria();
+	volcar_memoria();
 	/* Escritura */
 	if(registros[8].data==4)
 	{ 
