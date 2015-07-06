@@ -14,12 +14,23 @@ int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram)
 
 	char *stack;
 	int n_stacks = 0;
+	int ASCII_SPACE = 32;
 
 	/* leemos los 32 bits */
 
 	while(1 == fread(&instruccion, 1, 1, archivo))
 	{
+
 		int r1,r2,r3;
+
+		if (instruccion > ASCII_SPACE) {
+			// printf("%c", instruccion );
+			while(1 == fread(&instruccion, 1, 1, archivo) && instruccion != '\0');
+				// printf("%c",instruccion );
+			// printf("\n");
+			while(1 == fread(&instruccion, 1, 1, archivo) && instruccion == '\0');
+
+		} 
 		if (instruccion == LI) {
 			int dato;
 			fread(&r1, 1, 1, archivo);
@@ -45,7 +56,7 @@ int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram)
 			// printf("%d -  %d - %d - %d\n",instruccion, r1, r2, r3 );
 			agrega_instruccion(mar, crea_instruccion_r(instruccion, r1, r2, r3));
 
-		}
+		} 
 	}
 
 		
