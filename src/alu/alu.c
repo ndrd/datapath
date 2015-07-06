@@ -150,6 +150,7 @@ void lw(int dest,int addr, memoria_ram *ram)
 
 void sw(int dest, int addr, memoria_ram *ram)
 {
+	if(dest < 0) tirar_error(DIRECCION_INVALIDA);
 	guardar_ram(addr,ram,dest);
 	
 	return;	
@@ -164,6 +165,7 @@ void lb(int dest,int addr,memoria_ram *ram)
 
 void sb(int dest,int addr,memoria_ram *ram)
 {
+	if(dest < 0) tirar_error(DIRECCION_INVALIDA);
 	guardar_ram(addr,ram,dest);
 	
 	return;	
@@ -171,20 +173,14 @@ void sb(int dest,int addr,memoria_ram *ram)
 
 void b(int pc_dest)
 {	
-	if(pc_dest > 8)
-	{
-		tirar_error(DIRECCION_INVALIDA);
-	}
+	
 	return;
 }
 
 void beqz(int pc_dest)
 {	
 	//volcar_memoria();
-	if(pc_dest > 8)
-	{
-		tirar_error(DIRECCION_INVALIDA);
-	}
+	
 	if (pc_dest == 0)
 		return;
 	else
@@ -193,10 +189,7 @@ void beqz(int pc_dest)
 }
 void bltz(int pc_dest)
 {	
-	if(pc_dest > 8)
-	{
-		tirar_error(DIRECCION_INVALIDA);
-	}
+	
 	if(pc_dest < 0)
 		return;
 	else
