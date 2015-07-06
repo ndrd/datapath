@@ -25,7 +25,7 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 		printf("Ejecucion terminada correctamente\n");
 
 	int pc = 0;
-	int total_de_ciclos = -3;
+	int total_de_ciclos = 0;
 
 	while(1)
 	{
@@ -176,7 +176,7 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 		case SYSCALL:
 			*(total_de_ciclos) += C_SYSCALL;
 			*(pc) += 1;
-			syscalli();
+			syscalli(*total_de_ciclos);
 
 
 		break;
