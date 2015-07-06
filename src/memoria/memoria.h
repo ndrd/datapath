@@ -33,7 +33,7 @@ typedef struct
 } memoria_ram;
 
 /* almacena el dato dentro de la memoria, de la mano del nombre de la variable que se le asigno */
-void guardar_ram(int index, memoria_ram *memoria, char *nombre, int data);
+void guardar_ram(int index, memoria_ram *memoria, int data);
 /* nos da su posicion dentor del arreglo de la memoria */
 int get_index_ram(char *nombre, memoria_ram *memoria);
 /* establece el limite de la memoria */

@@ -2,18 +2,17 @@
 #include "../errores/errores.h"
 
 
-void guardar_ram (int i, memoria_ram *memoria, char *nombre, int data)
+void guardar_ram (int i, memoria_ram *memoria, int data)
 {
 	if (i < 0)
 		return;
 
-	 enteros de 4 bytes 
+	 //enteros de 4 bytes 
 	if(i >= memoria->limite/4)
 	{
 		tirar_error(MEMORIA_AGOTADA);
 	}
 		
-	strcpy(memoria->rows[i].nombre, nombre);
 	memoria->rows[i].data = data;
 	memoria->elementos++;
 	return;

@@ -150,9 +150,7 @@ void lw(int dest,int addr, memoria_ram *ram)
 
 void sw(int dest, int addr, memoria_ram *ram)
 {
-	if (addr > ram->limite)
-		tirar_error(3);
-	ram->rows[addr].data = registros[dest].data;
+	guardar_ram(addr,ram,dest);
 	
 	return;	
 }
@@ -166,7 +164,7 @@ void lb(int dest,int addr,memoria_ram *ram)
 
 void sb(int dest,int addr,memoria_ram *ram)
 {
-	ram->rows[addr].data=registros[dest].data;
+	guardar_ram(addr,ram,dest);
 	
 	return;	
 }
