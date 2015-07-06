@@ -24,7 +24,7 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 	if (mar->n <= 2)
 		printf("Ejecucion terminada correctamente\n");
 
-	int pc = 2;
+	int pc = 0;
 	int total_de_ciclos = 0;
 
 	while(1)

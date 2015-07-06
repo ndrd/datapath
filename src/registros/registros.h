@@ -8,7 +8,7 @@
 typedef struct 
 {
 	char nombre[4];			
-	int data;
+	float data;
 } registro;
 
 extern registro registros[14];

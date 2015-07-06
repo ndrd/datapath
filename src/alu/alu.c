@@ -7,8 +7,6 @@ void add(int dest, int reg1, int reg2)
 	int a = registros[reg1].data;
 	int b = registros[reg2].data;
 	registros[dest].data=a+b;
-	
-
 	return;
 }
 
@@ -205,11 +203,6 @@ void syscalli()
 	if(registros[8].data==4)
 	{ 
 		printf("%d\n",registros[9].data);
-
-		scanf("%d",&registros[8].data);
-		registros[10].data = registros[8].data;
-		printf("%d", registros[10].data);
-		printf("entero leido:%d",registros[10].data);
 
 	}
 	if(registros[8].data==1)
