@@ -39,8 +39,4 @@ void volcar_memoria() {
 		printf("Registro %s %d valor: %d\n", registros[i].nombre, i, registros[i].data);
 	}
 	
-	// for (int i = 0; i < ram->n; i++)
-	//  { 		
-	// 	printf("Ram %d\n"ram ->rows[i]); 	
-	// } 
 }

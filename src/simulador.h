@@ -25,7 +25,7 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 		printf("Ejecucion terminada correctamente\n");
 
 	int pc = 0;
-	int total_de_ciclos = 0;
+	int total_de_ciclos = -3;
 
 	while(1)
 	{
@@ -33,8 +33,9 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 		if (exito == 0)
 			break;
 	}
-	// printf("Total de ciclos %d\n", total_de_ciclos);
+	 printf("Total de ciclos %d\n", total_de_ciclos);
 }
+
 
 int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, int *total_de_ciclos)
 {
@@ -181,7 +182,7 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 
 		break;
 	}
-	printf("%d\n",*total_de_ciclos );
+	
 	return 1;
 }
 

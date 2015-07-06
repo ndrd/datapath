@@ -37,7 +37,7 @@ instruccion
 instruccion 
 *crea_instruccion_j(int op, int label)
 {
-	instruccion *instr;//=  calloc(sizeof(instruccion),1);
+	instruccion *instr;
 	instr->tipo = J;
 	instr->r2 = label;
 	instr->opcode = op;
@@ -60,7 +60,6 @@ int get_n_instruccion(memoria_instrucciones *mar, int  byte_dir)
 }
 
 
-
 void dump_instruccion(instruccion *inst)
 {
 	if (inst == NULL) {
@@ -76,7 +75,6 @@ void dump_instruccion(instruccion *inst)
 	printf("DT: %2f\n", inst->dato );
 	printf("\n");
 }
-
 
 void 
 agrega_instruccion(memoria_instrucciones *mar, instruccion *ins)
