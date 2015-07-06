@@ -144,6 +144,7 @@ void lw(int dest,int addr, memoria_ram *ram)
 {
 	registros[dest].data = ram->rows[addr].data;
 	
+	
 	return;
 }
 
@@ -248,6 +249,10 @@ int syscalli(int total_ciclos)
 	}
 	*/
 	
+	if(registros[8].data >= 9 || registros[8].data < 0)
+	{
+		tirar_error(LLAMADA_SYS_INVALIDA);
+	}
 	
 	
 	return 1;	
