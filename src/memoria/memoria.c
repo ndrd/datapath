@@ -18,20 +18,7 @@ void guardar_ram (int i, memoria_ram *memoria, int data)
 	return;
 }
 
-int get_index_ram (char *nombre, memoria_ram *memoria)
-{
-	if (memoria == NULL || nombre ==  NULL)
-		return -1;
 
-	for (int i = 0; i < memoria->limite; i++) {
-		if (!strcmp(nombre, memoria->rows[i].nombre))
-			return i;
-	}
-	
-	// Si no coincide muestra error
-	printf("Undefined reference : %s", nombre);
-	return 0;
-}
 
 /* Inicializa una memoria ram de un tamanio dado en bytes */
 memoria_ram* 
