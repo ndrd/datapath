@@ -26,11 +26,12 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 
 	int pc = 0;
 	int total_de_ciclos = 0;
+	int stack_size = 400;
 
 	while(1)
 	{
 		int exito = ejecuta_instruccion(&pc, mar, ram, &total_de_ciclos);
-		if (exito == 0)
+		if (exito == 0 || --stack_size == 0)
 			break;
 	}
 }
@@ -41,13 +42,15 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 
 	if (*(pc) > mar->n)
 		return 0;
-	printf("%d\n", *pc );
+	printf("PC: %d\n", *pc );
 	instruccion *instr =  &mar->rows[*(pc)];
 	int dest =  instr->r1;
 	int reg1 = instr->r2;
 	int reg2 = instr->r3;
 	int num = instr->dato;
 	int val = num;
+
+	int tmp;
 	
 	switch (instr->opcode)	 {
 		case ADD:
@@ -147,35 +150,47 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 
 			break;
 		case LI:
+			printf("lliliiililil\n");
+
 			li(dest,val);
 			*(total_de_ciclos) += C_LI;
 			*(pc) += 1;
 			
 			break;
 		case B:
-			//b(0);
-			//int n_instr = get_n_instruccion(mar, registros[instr->r3].data);
-			//b(n_instr);
+			tmp = get_n_instruccion(mar, registros[instr->r3].data);
 			*(total_de_ciclos) += C_B;
-			*(pc) += 1;
-			// *(pc) = (n_instr < 2) ? *(pc) + 1 : n_instr;
+			// *(pc) += 1;
+			*(pc) = (tmp < 2) ? *(pc) + 1 : tmp+1;
 			break;
 		case BEQZ :
-			//beqz(num);
 			*(total_de_ciclos) += C_BEQZ;
-			*(pc) += 1;
-			
+			tmp = get_n_instruccion(mar, registros[instr->r1].data);
+
+			if (registros[instr->r3].data == 0)
+				*(pc) = tmp+1;
+			else
+				*(pc) += 1;
 			break;
 		case BLTZ :
-			bltz(num);
 			*(total_de_ciclos) += C_BLTZ;
-			*(pc) += 1;
-		
+			int dato = (int) registros[instr->r3].data;
+			tmp = get_n_instruccion(mar, registros[instr->r1].data);
+			printf("asd %d %d\n",dato, tmp );
+
+			volcar_memoria();
+			dump_instruccion(instr);
+			if (dato < 0)
+				*(pc) = tmp+1;
+			else
+				*(pc) += 1;
 			break;
+
 		case SYSCALL:
+			printf("sdadsadasdas\n");
 			*(total_de_ciclos) += C_SYSCALL;
 			*(pc) += 1;
-			syscalli(*total_de_ciclos);
+			return syscalli(*total_de_ciclos);
 
 
 		break;

@@ -33,7 +33,7 @@ void li(int dest,int val);
 void b(int num);		
 void beqz (int num);	
 void bltz (int num);		
-void syscalli(int total_ciclos);								
+int syscalli(int total_ciclos);								
 
 #endif		
 

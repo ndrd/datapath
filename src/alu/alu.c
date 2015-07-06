@@ -193,7 +193,7 @@ void bltz(int pc_dest)
 }
 
 
-void syscalli(int total_ciclos)
+int syscalli(int total_ciclos)
 {
 	//volcar_memoria();
 	/* Escritura */
@@ -218,6 +218,7 @@ void syscalli(int total_ciclos)
 	if(registros[8].data==8)
 	{ 
 		printf("\n%d\n", total_ciclos);
+		return 0;
 		exit(0);
 	}
 
@@ -250,5 +251,5 @@ void syscalli(int total_ciclos)
 	
 	
 	
-	return;	
+	return 1;	
 }
