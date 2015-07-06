@@ -181,7 +181,7 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 
 		break;
 	}
-
+	printf("%d\n",*total_de_ciclos );
 	return 1;
 }
 
