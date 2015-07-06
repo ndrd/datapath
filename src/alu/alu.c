@@ -195,6 +195,11 @@ void bltz(int pc_dest)
 
 int syscalli(int total_ciclos)
 {
+	if(registros[8].data >= 9 || registros[8].data < 0)
+	{
+		tirar_error(LLAMADA_SYS_INVALIDA);
+	}
+	
 	volcar_memoria();
 	/* Escritura */
 	if(registros[8].data==4)
@@ -249,10 +254,7 @@ int syscalli(int total_ciclos)
 	}
 	*/
 	
-	if(registros[8].data >= 9 || registros[8].data < 0)
-	{
-		tirar_error(LLAMADA_SYS_INVALIDA);
-	}
+
 	
 	
 	return 1;	
