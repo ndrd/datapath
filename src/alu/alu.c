@@ -171,12 +171,20 @@ void sb(int dest,int addr,memoria_ram *ram)
 
 void b(int pc_dest)
 {	
+	if(pc_dest > 8)
+	{
+		tirar_error(DIRECCION_INVALIDA);
+	}
 	return;
 }
 
 void beqz(int pc_dest)
 {	
-	volcar_memoria();
+	//volcar_memoria();
+	if(pc_dest > 8)
+	{
+		tirar_error(DIRECCION_INVALIDA);
+	}
 	if (pc_dest == 0)
 		return;
 	else
@@ -185,6 +193,10 @@ void beqz(int pc_dest)
 }
 void bltz(int pc_dest)
 {	
+	if(pc_dest > 8)
+	{
+		tirar_error(DIRECCION_INVALIDA);
+	}
 	if(pc_dest < 0)
 		return;
 	else
@@ -201,6 +213,12 @@ int syscalli(int total_ciclos)
 	}
 	
 	volcar_memoria();
+
+	if(registros[8].data >= 9 || registros[8].data < 0)
+	{
+		tirar_error(LLAMADA_SYS_INVALIDA);
+	}
+
 	/* Escritura */
 	if(registros[8].data==4)
 	{ 
@@ -254,8 +272,12 @@ int syscalli(int total_ciclos)
 	}
 	*/
 	
+<<<<<<< Updated upstream
 
 	
+=======
+		
+>>>>>>> Stashed changes
 	
 	return 1;	
 }
