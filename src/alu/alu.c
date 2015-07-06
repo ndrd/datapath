@@ -201,31 +201,33 @@ void bltz(int pc_dest)
 
 void syscalli()
 {
-
+	volcar_memoria();
+	/* Escritura */
 	if(registros[8].data==4)
 	{ 
 		printf("%d\n",registros[9].data);
-
 	}
-	if(registros[8].data==1)
+	if(registros[8].data==5)
 	{ 
-		scanf("%d",&registros[8].data);
-		registros[10].data = registros[8].data;
-		printf("caracter leido:%d",registros[10].data);
+		printf("%c\n",registros[9].data);
 	}
-	if(registros[8].data==2)
+	if(registros[8].data==6)
 	{ 
-		scanf("%d",&registros[8].data);
-		registros[10].data = registros[8].data;
-		printf("numero leido:%d",registros[10].data);
+		printf("%f\n",(float)(registros[9].data));
 	}
-	if(registros[8].data==3)
+	if(registros[8].data==7)
 	{ 
 		scanf("%d",&registros[8].data);
 		registros[10].data = registros[8].data;
 		printf("numero de caracteres leido:%d",registros[10].data);
 	}
 
+	if(registros[8].data==8)
+	{ 
+		exit(0);
+	}
+
+	/* Lectura */
 	if(registros[9].data==4)
 	{ 
 		scanf("%d",&registros[9].data);
@@ -250,10 +252,7 @@ void syscalli()
 		registros[9].data = registros[9].data;
 		printf("--%d\n",registros[9].data);
 	}
-	if(registros[10].data==8)
-	{ 
-		exit(0);
-	}
+	
 	if(registros[2].data==1)
 	{
 		printf("--%d\n",registros[4].data);		
