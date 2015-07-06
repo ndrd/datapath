@@ -206,11 +206,6 @@ void syscalli()
 	{ 
 		printf("%d\n",registros[9].data);
 
-		scanf("%d",&registros[8].data);
-		registros[10].data = registros[8].data;
-		printf("%d", registros[10].data);
-		printf("entero leido:%d",registros[10].data);
-
 	}
 	if(registros[8].data==1)
 	{ 
@@ -238,7 +233,6 @@ void syscalli()
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
-
 		printf("--%d\n",registros[9].data);
 
 	}
