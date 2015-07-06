@@ -41,8 +41,6 @@ void divi (int dest,int reg1,int reg2)
 		
 	int a=registros[reg1].data;
 	int b=registros[reg2].data;
-	printf("no, es\n");
-
 	if(b <= 0)
 		tirar_error(DIVISION_CERO) ;
 
@@ -92,7 +90,6 @@ void fdiv (int dest,int reg1,int reg2)
 		
 	int a=registros[reg1].data;
 	int b=registros[reg2].data;
-	printf("es aqui\n");
 	if(b <= 0)
 		tirar_error(DIVISION_CERO) ;
 	registros[dest].data= a / b;
@@ -118,11 +115,10 @@ void and(int dest,int reg1,int reg2)
 void or(int dest,int reg1,int reg2)
 {
 		
-			
 	int a=registros[reg1].data;
 	int b=registros[reg2].data;
 	
-	registros[dest].data = a | b;
+	registros[dest].data = (a | b);
 	
 	
 	
@@ -131,25 +127,16 @@ void or(int dest,int reg1,int reg2)
  
 void not(int reg1)
 {
-				
 	int a=registros[reg1].data;
-	
 	a = -a;
-	
-	
 	return;
 }
  
  void xor(int dest,int reg1,int reg2)
 {
-		
 	int a=registros[reg1].data;
 	int b=registros[reg2].data;
-	
 	registros[dest].data= ((a + b) * ((-a) + (-b))) ;
-	
-	
-	
 	return;
 }
  
@@ -157,11 +144,7 @@ void not(int reg1)
 
 void li(int dest, int val)
 {
-	printf("%d\n",dest);
 	registros[dest].data = val;
-		
-		
-	return;
 }
 
 
@@ -195,7 +178,6 @@ void sb(int dest,int addr,memoria_ram *ram)
 
 void b(int pc_dest)
 {	
-	printf("brach to: %d - MemAddr- \n",pc_dest);
 	return;
 }
 
@@ -219,11 +201,10 @@ void bltz(int pc_dest)
 
 void syscalli()
 {
-	if(registros[8].data==0)
+
+	if(registros[8].data==4)
 	{ 
-		scanf("%d",&registros[8].data);
-		registros[10].data = registros[8].data;
-		printf("%d",registros[10].data);
+		printf("%d\n",registros[9].data);
 	}
 	if(registros[8].data==1)
 	{ 
@@ -248,25 +229,25 @@ void syscalli()
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
-		printf("%d\n",registros[9].data);
+		printf("--%d\n",registros[9].data);
 	}
 	if(registros[9].data==5)
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
-		printf("%d\n",registros[9].data);
+		printf("--%d\n",registros[9].data);
 	}
 	if(registros[9].data==6)
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
-		printf("%d\n",registros[9].data);
+		printf("--%d\n",registros[9].data);
 	}
 	if(registros[9].data==7)
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
-		printf("%d\n",registros[9].data);
+		printf("--%d\n",registros[9].data);
 	}
 	if(registros[10].data==8)
 	{ 
@@ -274,7 +255,7 @@ void syscalli()
 	}
 	if(registros[2].data==1)
 	{
-		printf("%d\n",registros[4].data);		
+		printf("--%d\n",registros[4].data);		
 	}
 	else if(registros[2].data==5)
 	{

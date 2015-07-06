@@ -33,20 +33,17 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 		if (exito == 0)
 			break;
 	}
-	printf("Total de ciclos %d\n", total_de_ciclos);
+	// printf("Total de ciclos %d\n", total_de_ciclos);
 }
 
 int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, int *total_de_ciclos)
 {
-
-	printf("%d  pc: %d\n", *(pc), mar->n );
 
 	if (*(pc) > mar->n)
 		return 0;
 
 	instruccion *instr =  &mar->rows[*(pc)];
 	//dump_instruccion(instr);
-
 	int dest =  instr->r1;
 	int reg1 = instr->r2;
 	int reg2 = instr->r3;
@@ -157,12 +154,12 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 			
 			break;
 		case B:
-			dump_instruccion(instr);
+			b(0);
 			int n_instr = get_n_instruccion(mar, registros[instr->r3].data);
 			b(n_instr);
 			*(total_de_ciclos) += C_B;
 			//*(pc) += 1;
-			*(pc) = (n_instr == 0) ? *(pc) + 1 : n_instr;
+			*(pc) = (n_instr < 2) ? *(pc) + 1 : n_instr;
 			break;
 		case BEQZ :
 			//beqz(num);
