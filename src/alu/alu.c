@@ -49,11 +49,10 @@ void divi (int dest,int reg1,int reg2)
 
 void fadd(int dest,int reg1,int reg2)
 {	
-		
-	int a=registros[reg1].data;
-	int b=registros[reg2].data;
+	volcar_memoria();
+	float a=(float)registros[reg1].data;
+	float b=(float)registros[reg2].data;
 	registros[dest].data=a+b;
-	
 	return;
 }
 
@@ -61,8 +60,8 @@ void fadd(int dest,int reg1,int reg2)
 void fsub(int dest,int reg1,int reg2)
 {	
 		
-	int a=registros[reg1].data;
-	int b=registros[reg2].data;
+	float a=(float)registros[reg1].data;
+	float b=(float)registros[reg2].data;
 	
 	registros[dest].data=a-b;
 
@@ -71,8 +70,8 @@ void fsub(int dest,int reg1,int reg2)
 void fmul (int dest,int reg1,int reg2)
 {	
 		
-	int a=registros[reg1].data;
-	int b=registros[reg2].data;
+	float a=(float)registros[reg1].data;
+	float b=(float)registros[reg2].data;
 
 	registros[dest].data=a*b;
 	
@@ -81,11 +80,11 @@ void fmul (int dest,int reg1,int reg2)
 void fdiv (int dest,int reg1,int reg2)
 {	
 		
-	int a=registros[reg1].data;
-	int b=registros[reg2].data;
+	float a=(float)registros[reg1].data;
+	float b=(float)registros[reg2].data;
 	if(b <= 0)
 		tirar_error(DIVISION_CERO) ;
-	registros[dest].data= a / b;
+	registros[dest].data = a / (b * 1.0);
 
 	return;
 }
@@ -107,10 +106,13 @@ void and(int dest,int reg1,int reg2)
 void or(int dest,int reg1,int reg2)
 {
 		
-	int a=registros[reg1].data;
-	int b=registros[reg2].data;
-	
-	registros[dest].data = (a | b);
+	float a = (float)registros[reg1].data;
+	float b = (float)registros[reg2].data;
+	int integer = (int) a;
+	float residuo = a - integer;
+	if (residuo != 0)
+		a = a * 10000000; 
+	registros[dest].data = ((int)a | (int)b);
 	
 	return;
 }
@@ -197,21 +199,20 @@ void syscalli(int total_ciclos)
 	/* Escritura */
 	if(registros[8].data==4)
 	{ 
-		printf("%d\n",registros[9].data);
+		printf("%d\n",(int)registros[9].data);
 	}
 	if(registros[8].data==5)
 	{ 
-		printf("%c\n",registros[9].data);
+		printf("%c\n",(char)registros[9].data);
 	}
 	if(registros[8].data==6)
 	{ 
-		printf("%f\n",(float)(registros[9].data));
+		printf("%f\n",(float)(registros[9].data/10000000));
 	}
 	if(registros[8].data==7)
 	{ 
-		scanf("%d",&registros[8].data);
-		registros[10].data = registros[8].data;
-		printf("numero de caracteres leido:%d",registros[10].data);
+		int addr = (int)registros[10].data;
+		printf("%s","aa");
 	}
 
 	if(registros[8].data==8)
@@ -220,7 +221,7 @@ void syscalli(int total_ciclos)
 		exit(0);
 	}
 
-	/* Lectura */
+	/* Lectura 
 	if(registros[9].data==4)
 	{ 
 		scanf("%d",&registros[9].data);
@@ -237,29 +238,16 @@ void syscalli(int total_ciclos)
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
-		printf("--%d\n",registros[9].data);
+		printf("%d\n",registros[9].data);
 	}
 	if(registros[9].data==7)
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
-		printf("--%d\n",registros[9].data);
+		printf("%d\n",registros[9].data);
 	}
+	*/
 	
-	if(registros[2].data==1)
-	{
-		printf("--%d\n",registros[4].data);		
-	}
-	else if(registros[2].data==5)
-	{
-		scanf("%d",&registros[2].data);
-
-	}
-	else if(registros[2].data==10)
-	{
-
-		exit(0);
-	}	
 	
 	
 	return;	
