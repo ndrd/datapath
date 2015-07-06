@@ -21,7 +21,7 @@ typedef struct
 	/* el nombre de la variable almacenada */
 	char nombre[16];
 	/* int de 32 bits, justo lo que necesitamos */
-	int data;
+	float data;
 } row;
 
 /* representa la memoria de datos puede almacenar */
