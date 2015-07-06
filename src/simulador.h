@@ -162,7 +162,7 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 			b(n_instr);
 			*(total_de_ciclos) += C_B;
 			//*(pc) += 1;
-			*(pc) = n_instr;
+			*(pc) = (n_instr == 0) ? *(pc) + 1 : n_instr;
 			break;
 		case BEQZ :
 			//beqz(num);
