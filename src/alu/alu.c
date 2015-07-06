@@ -157,7 +157,6 @@ void not(int reg1)
 
 void li(int dest, int val)
 {
-	printf("%d\n",dest);
 	registros[dest].data = val;
 		
 		
@@ -223,24 +222,28 @@ void syscalli()
 	{ 
 		scanf("%d",&registros[8].data);
 		registros[10].data = registros[8].data;
-		printf("%d",registros[10].data);
+		printf("%d", registros[10].data);
+		printf("entero leido:%d",registros[10].data);
 	}
 	if(registros[8].data==1)
 	{ 
 		scanf("%d",&registros[8].data);
 		registros[10].data = registros[8].data;
+		printf("%d", registros[10].data);
 		printf("caracter leido:%d",registros[10].data);
 	}
 	if(registros[8].data==2)
 	{ 
 		scanf("%d",&registros[8].data);
 		registros[10].data = registros[8].data;
+		printf("%d", registros[10].data);
 		printf("numero leido:%d",registros[10].data);
 	}
 	if(registros[8].data==3)
 	{ 
 		scanf("%d",&registros[8].data);
 		registros[10].data = registros[8].data;
+		printf("%d", registros[10].data);
 		printf("numero de caracteres leido:%d",registros[10].data);
 	}
 
@@ -248,18 +251,21 @@ void syscalli()
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
+
 		printf("%d\n",registros[9].data);
 	}
 	if(registros[9].data==5)
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
+	
 		printf("%d\n",registros[9].data);
 	}
 	if(registros[9].data==6)
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
+
 		printf("%d\n",registros[9].data);
 	}
 	if(registros[9].data==7)
