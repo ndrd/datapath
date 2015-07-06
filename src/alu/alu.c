@@ -216,6 +216,7 @@ void syscalli()
 
 	if(registros[8].data==8)
 	{ 
+		volcar_memoria();
 		exit(0);
 	}
 

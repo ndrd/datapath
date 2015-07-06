@@ -33,7 +33,6 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 		if (exito == 0)
 			break;
 	}
-	 printf("Total de ciclos %d\n", total_de_ciclos);
 }
 
 
@@ -175,10 +174,10 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 		
 			break;
 		case SYSCALL:
-			syscalli();
 			*(total_de_ciclos) += C_SYSCALL;
 			*(pc) += 1;
-		
+			syscalli();
+
 
 		break;
 	}
