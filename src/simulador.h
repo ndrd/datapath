@@ -175,7 +175,6 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 			break;
 		case SYSCALL:
 			syscalli();
-			dump_instruccion(instr);
 			*(total_de_ciclos) += C_SYSCALL;
 			*(pc) += 1;
 		
