@@ -193,7 +193,7 @@ void bltz(int pc_dest)
 
 void syscalli()
 {
-	volcar_memoria();
+	//volcar_memoria();
 	/* Escritura */
 	if(registros[8].data==4)
 	{ 
