@@ -150,6 +150,8 @@ void lw(int dest,int addr, memoria_ram *ram)
 
 void sw(int dest, int addr, memoria_ram *ram)
 {
+	if (addr > ram->limite)
+		tirar_error(3);
 	ram->rows[addr].data = registros[dest].data;
 	
 	return;	
@@ -199,8 +201,6 @@ int syscalli(int total_ciclos)
 	{
 		tirar_error(LLAMADA_SYS_INVALIDA);
 	}
-	
-	volcar_memoria();
 	/* Escritura */
 	if(registros[8].data==4)
 	{ 

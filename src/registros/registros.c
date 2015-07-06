@@ -18,7 +18,7 @@ void iniciar_registros()
 	strcpy(registros[10].nombre, "s0");
 	strcpy(registros[11].nombre, "ra");
 	strcpy(registros[12].nombre, "pc");
-	strcpy(registros[13].nombre, "p");
+	strcpy(registros[13].nombre, "sp");
 	return;
 }
 
