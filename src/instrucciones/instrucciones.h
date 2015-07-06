@@ -79,7 +79,7 @@ typedef struct
 	int pc;
 	int n;
 	char * byte_code;
-	instruccion rows[LIMITE_MEMORIA_INSTRUCCIONES];// = calloc(LIMITE_MEMORIA_INSTRUCCIONES, sizeof(instruccion));
+	instruccion rows[LIMITE_MEMORIA_INSTRUCCIONES];
 } memoria_instrucciones;
 
 struct etiqueta {
@@ -100,7 +100,6 @@ struct
 
 
 memoria_instrucciones *init_mar();	
-//instruccion *crea_instruccion_r();
 instruccion *crea_instruccion_r(int opcode, int r1, int r2, int r3);
 instruccion *crea_instruccion_i(int instruccion, int r1,  int dato); 
 instruccion *crea_instruccion_j(int instruccion,  int ubicacion);

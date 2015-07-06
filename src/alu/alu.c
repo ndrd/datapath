@@ -8,7 +8,6 @@ void add(int dest, int reg1, int reg2)
 	int b = registros[reg2].data;
 	registros[dest].data=a+b;
 	
-
 	return;
 }
 
@@ -21,7 +20,6 @@ void sub(int dest,int reg1,int reg2)
 	
 	registros[dest].data=a-b;
 	
-
 	return;
 }
 
@@ -33,7 +31,6 @@ void mul (int dest,int reg1,int reg2)
 	
 	registros[dest].data=a*b;
 	
-
 	return;
 }	
 void divi (int dest,int reg1,int reg2)
@@ -45,7 +42,6 @@ void divi (int dest,int reg1,int reg2)
 		tirar_error(DIVISION_CERO) ;
 
 	registros[dest].data=a/b;
-	
 
 	return;
 }
@@ -58,7 +54,6 @@ void fadd(int dest,int reg1,int reg2)
 	int b=registros[reg2].data;
 	registros[dest].data=a+b;
 	
-
 	return;
 }
 
@@ -70,7 +65,6 @@ void fsub(int dest,int reg1,int reg2)
 	int b=registros[reg2].data;
 	
 	registros[dest].data=a-b;
-	
 
 	return;
 }
@@ -82,7 +76,6 @@ void fmul (int dest,int reg1,int reg2)
 
 	registros[dest].data=a*b;
 	
-
 	return;
 }	
 void fdiv (int dest,int reg1,int reg2)
@@ -93,7 +86,6 @@ void fdiv (int dest,int reg1,int reg2)
 	if(b <= 0)
 		tirar_error(DIVISION_CERO) ;
 	registros[dest].data= a / b;
-	
 
 	return;
 }
@@ -120,8 +112,6 @@ void or(int dest,int reg1,int reg2)
 	
 	registros[dest].data = (a | b);
 	
-	
-	
 	return;
 }
  
@@ -129,6 +119,7 @@ void not(int reg1)
 {
 	int a=registros[reg1].data;
 	a = -a;
+
 	return;
 }
  
@@ -136,7 +127,8 @@ void not(int reg1)
 {
 	int a=registros[reg1].data;
 	int b=registros[reg2].data;
-	registros[dest].data= ((a + b) * ((-a) + (-b))) ;
+	registros[dest].data= ((a + b) * ((-a) + (-b)));
+
 	return;
 }
  

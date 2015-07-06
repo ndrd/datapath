@@ -14,6 +14,7 @@ int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram)
 
 	char *stack;
 	int n_stacks = 0;
+
 	/* leemos los 32 bits */
 
 	while(1 == fread(&instruccion, 1, 1, archivo))
@@ -52,14 +53,6 @@ int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram)
 	return 0;
 	
 }  
-
-/*
-int e = (instruccion ) & 0x000000ff;
-int f = (instruccion >> 8) & 0x000000ff;
-int g = (instruccion >> 16) & 0x000000FF;
-int h = (instruccion >> 24) & 0x000000FF;
-printf("%d - %d - %d - %d\n", instruccion , f, g, h);
-*/
 
 
 void showbits(unsigned int x)
