@@ -24,7 +24,7 @@ run_simulator(memoria_ram *ram, memoria_instrucciones *mar, FILE *binario)
 	if (mar->n <= 2)
 		printf("Ejecucion terminada correctamente\n");
 
-	int pc = 2;
+	int pc = 0;
 	int total_de_ciclos = 0;
 
 	while(1)
@@ -162,7 +162,7 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 			b(n_instr);
 			*(total_de_ciclos) += C_B;
 			//*(pc) += 1;
-			*(pc) = n_instr;
+			*(pc) = (n_instr == 0) ? *(pc) + 1 : n_instr;
 			break;
 		case BEQZ :
 			//beqz(num);
