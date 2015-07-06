@@ -205,6 +205,7 @@ void syscalli()
 	if(registros[8].data==4)
 	{ 
 		printf("%d\n",registros[9].data);
+
 	}
 	if(registros[8].data==1)
 	{ 
