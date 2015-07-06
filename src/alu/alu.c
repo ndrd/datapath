@@ -49,7 +49,6 @@ void divi (int dest,int reg1,int reg2)
 
 void fadd(int dest,int reg1,int reg2)
 {	
-	volcar_memoria();
 	float a=(float)registros[reg1].data;
 	float b=(float)registros[reg2].data;
 	registros[dest].data=a+b;
@@ -177,8 +176,9 @@ void b(int pc_dest)
 
 void beqz(int pc_dest)
 {	
+	volcar_memoria();
 	if (pc_dest == 0)
-		pc = tabla_etiquetas.indice[pc_dest].n_instruccion;
+		return;
 	else
 		return;
 
@@ -186,7 +186,7 @@ void beqz(int pc_dest)
 void bltz(int pc_dest)
 {	
 	if(pc_dest < 0)
-		pc=tabla_etiquetas.indice[pc_dest].n_instruccion;
+		return;
 	else
 		return;
 

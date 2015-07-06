@@ -41,9 +41,8 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 
 	if (*(pc) > mar->n)
 		return 0;
-
+	printf("%d\n", *pc );
 	instruccion *instr =  &mar->rows[*(pc)];
-	//dump_instruccion(instr);
 	int dest =  instr->r1;
 	int reg1 = instr->r2;
 	int reg2 = instr->r3;
@@ -154,12 +153,12 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 			
 			break;
 		case B:
-			b(0);
-			int n_instr = get_n_instruccion(mar, registros[instr->r3].data);
-			b(n_instr);
+			//b(0);
+			//int n_instr = get_n_instruccion(mar, registros[instr->r3].data);
+			//b(n_instr);
 			*(total_de_ciclos) += C_B;
-			//*(pc) += 1;
-			*(pc) = (n_instr < 2) ? *(pc) + 1 : n_instr;
+			*(pc) += 1;
+			// *(pc) = (n_instr < 2) ? *(pc) + 1 : n_instr;
 			break;
 		case BEQZ :
 			//beqz(num);
@@ -180,6 +179,9 @@ int  ejecuta_instruccion(int *pc, memoria_instrucciones *mar, memoria_ram *ram, 
 
 
 		break;
+		default:
+			*pc +=1;
+			break;
 	}
 	
 	return 1;

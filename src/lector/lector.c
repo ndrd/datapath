@@ -21,14 +21,13 @@ int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram)
 	{
 		int r1,r2,r3;
 		if (instruccion == LI) {
-			unsigned int dato = 0;
+			int dato;
 			fread(&r1, 1, 1, archivo);
 			fread(&dato, 4 , 1, archivo);
 
 			r1 = r1  & 0x000000ff;
 			dato = (dato >> 24) & 0x000000ff;
-			n_stacks += 5;
-			printf("%d -  %d - %d \n", instruccion, r1 , dato );
+			// printf("%d -  %d - %d \n", instruccion, r1 , dato );
 
 			tabla_etiquetas.indice[tabla_etiquetas.n].n_instruccion = mar->n;
 			tabla_etiquetas.indice[tabla_etiquetas.n++].byte_dir = dato;
@@ -43,7 +42,7 @@ int cargar_binario(FILE *archivo, memoria_instrucciones *mar, memoria_ram *ram)
 			r2 = (r2 & 0x000000ff);
 			r3 =  (r3& 0x000000ff);
 
-			printf("%d -  %d - %d - %d\n",instruccion, r1, r2, r3 );
+			// printf("%d -  %d - %d - %d\n",instruccion, r1, r2, r3 );
 			agrega_instruccion(mar, crea_instruccion_r(instruccion, r1, r2, r3));
 
 		}
