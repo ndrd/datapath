@@ -24,7 +24,7 @@ void fdiv (int dest,int reg1,int reg2);
 void and(int dest,int reg1,int reg2);		
 void or (int dest,int reg1,int reg2);	
 void xor (int dest,int reg1,int reg2);	
-void not (int num);		
+void not (int dest, int reg1);		
 void lb (int dest,int reg1,memoria_ram *ram);		
 void lw (int dest,int addr, memoria_ram *ram);	
 void sb (int dest,int reg1, memoria_ram *ram);	

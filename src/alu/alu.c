@@ -116,11 +116,10 @@ void or(int dest,int reg1,int reg2)
 	return;
 }
  
-void not(int reg1)
+void not(int dest, int reg1)
 {
-	int a=registros[reg1].data;
-	a = -a;
-
+	int a = (int)registros[reg1].data;
+	registros[dest].data = ~a;
 	return;
 }
  
@@ -128,7 +127,7 @@ void not(int reg1)
 {
 	int a=registros[reg1].data;
 	int b=registros[reg2].data;
-	registros[dest].data= ((a + b) * ((-a) + (-b)));
+	registros[dest].data= a ^ b;
 
 	return;
 }
