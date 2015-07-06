@@ -204,14 +204,13 @@ void syscalli()
 
 	if(registros[8].data==4)
 	{ 
-<<<<<<< HEAD
 		printf("%d\n",registros[9].data);
-=======
+
 		scanf("%d",&registros[8].data);
 		registros[10].data = registros[8].data;
 		printf("%d", registros[10].data);
 		printf("entero leido:%d",registros[10].data);
->>>>>>> origin/master
+
 	}
 	if(registros[8].data==1)
 	{ 
@@ -239,34 +238,26 @@ void syscalli()
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
-<<<<<<< HEAD
-		printf("--%d\n",registros[9].data);
-=======
 
-		printf("%d\n",registros[9].data);
->>>>>>> origin/master
+		printf("--%d\n",registros[9].data);
+
 	}
 	if(registros[9].data==5)
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
-<<<<<<< HEAD
+
 		printf("--%d\n",registros[9].data);
-=======
-	
-		printf("%d\n",registros[9].data);
->>>>>>> origin/master
+
 	}
 	if(registros[9].data==6)
 	{ 
 		scanf("%d",&registros[9].data);
 		registros[9].data = registros[9].data;
-<<<<<<< HEAD
-		printf("--%d\n",registros[9].data);
-=======
 
-		printf("%d\n",registros[9].data);
->>>>>>> origin/master
+		printf("--%d\n",registros[9].data);
+
+
 	}
 	if(registros[9].data==7)
 	{ 
